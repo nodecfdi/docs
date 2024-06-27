@@ -1,0 +1,52 @@
+---
+title: NodeCfdi
+head:
+  - tag: title
+    content: NodeCfdi
+description: Librerías de NodeJS, Javascript y Typescript para trabajar con CFDI y otras herramientas del SAT.
+template: splash
+hero:
+  tagline: Librerías de NodeJS, Javascript y Typescript para trabajar con CFDI y otras herramientas del SAT
+  image:
+    dark: ../../assets/nodecfdi_logo_dark.webp
+    light: ../../assets/nodecfdi_logo_light.webp
+  actions:
+    - text: Empezar
+      link: /getting-started/manifesto
+      icon: right-arrow
+      variant: primary
+    - text: Inspirado por PhpCfdi
+      link: https://phpcfdi.com/
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Librerias mas usadas
+
+<CardGrid stagger>
+  <Card
+    title="Credentials"
+    icon="seti:license"
+  >
+    Librería para usar eFirma (fiel) y CSD (sellos) para el SAT.
+  </Card>
+  <Card
+    title="SAT WS Descarga Masiva"
+    icon="seti:argdown"
+  >
+    Librería para usar el servicio web del SAT de Descarga Masiva.
+  </Card>
+  <Card
+    title="CFDI to JSON"
+    icon="seti:json"
+  >
+    Librería para convertir archivos CFDI a JSON.
+  </Card>
+  <Card
+    title="CFDI to PDF"
+    icon="seti:pdf"
+  >
+    Librería para crear un pdf basado en un XML CFDI o Retenciones.
+  </Card>
+</CardGrid>

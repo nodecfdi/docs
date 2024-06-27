@@ -1,0 +1,27 @@
+{
+  "name": "@nodecfdi/docs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@nodecfdi/prettier-config": "^1.1.1",
+    "prettier": "^3.3.2"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/starlight": "^0.24.4",
+    "astro": "^4.11.3",
+    "sharp": "^0.33.4",
+    "typescript": "^5.5.2"
+  },
+  "prettier": "@nodecfdi/prettier-config",
+  "packageManager": "pnpm@9.4.0"
+}
