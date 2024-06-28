@@ -1,0 +1,106 @@
+---
+title: Contribuciones
+description: NodeCfdi contribuciones.
+---
+
+Las contribuciones son bienvenidas. Aceptamos *Pull Requests* en todos los proyectos de [NodeCfdi][nodeCfdi].
+Antes de contribuir en cualquiera de nuestros repos e ingresar en la comunidad, deberás seguir este código.
+
+## Canales de comunicación
+
+Puedes encontrar ayuda y comentar asuntos relacionados con CFDI y en general de la organización en este lugar:
+
+* Comunidad Discord: https://discord.gg/AsqX8fkW2k
+
+## Reportar Bugs
+
+Publica los *Bugs* en la sección *Issues* del proyecto.
+
+Cuando se reporte un *Bug*, por favor incluye la mayor información posible para reproducir el problema, preferentemente
+con ejemplos de código o cualquier otra información técnica que nos pueda ayudar a identificar el caso.
+
+**Recuerda no incluir contraseñas, información personal o confidencial.**
+
+## Corrección de Bugs
+
+Apreciamos mucho los *Pull Request* para corregir Bugs.
+
+Si encuentras un reporte de Bug y te gustaría solucionarlo siéntete libre de hacerlo.
+Sigue las directrices de "Agregar nuevas funcionalidades" a continuación.
+
+## Agregar nuevas funcionalidades
+
+Si tienes una idea para una nueva funcionalidad revisa primero que existan discusiones o *Pull Requests*
+en donde ya se esté trabajando en la funcionalidad.
+
+Antes de trabajar en la nueva característica, utiliza los "Canales de comunicación" mencionados
+anteriormente para platicar acerca de tu idea. Si dialogas tus ideas con la comunidad y los
+mantenedores del proyecto, podrás ahorrar mucho esfuerzo de desarrollo y prevenir que tu
+*Pull Request* sea rechazado. No nos gusta rechazar contribuciones, pero algunas características
+o la forma de desarrollarlas puede que no estén alineadas con el proyecto.
+
+Considera las siguientes directrices:
+
+* Usa una rama única que se desprenda de la rama principal.
+* No mezcles dos diferentes funcionalidades en una misma rama o *Pull Request*.
+* Describe claramente y en detalle los cambios que hiciste.
+* **Escribe pruebas** para la funcionalidad que deseas agregar.
+* Asegúrate que **las pruebas pasan** antes de enviar tu contribución.
+  Usamos integración continua donde se hace esta verificación, pero es mucho mejor si lo pruebas localmente.
+* Intenta enviar una historia coherente, entenderemos cómo cambia el código si los *commits* tienen significado.
+* La documentación es parte del proyecto.
+* Realiza los cambios en los archivos de ayuda para que reflejen los cambios en el código.
+
+## Configuración del repositorio
+
+1. Inicia clonando el repo en tu maquina local.
+
+    ```sh
+    git clone <REPO_URL>
+    ```
+
+2. Instala las dependencias. Por favor no actualices ninguna dependencia fuera de la nueva funcionalidad. Si encuentra dependencias obsoletas, cree un PR separado para actualizarlas.
+
+    Nosotros usamos `pnpm` para manejar las dependencies, por lo tanto no utilice `yarn`, `npm` ni ninguna otra herramienta.
+
+    ```sh
+    pnpm install
+    ```
+
+3. Corre los tests ejecutando el siguiente comando.
+
+    ```sh
+    pnpm test:run
+    ```
+
+## Herramientas en uso
+
+A continuación la lista de las herramientas que usamos.
+
+| Herramienta | Uso |
+|-------|--------|
+| TypeScript | Todos los repositorios están creados en TypeScript. El JavaScript compilado y las definiciones de tipo se publican en npm. |
+| ESLint | ESLint nos ayuda a aplicar un estilo de codificación consistente en todos los repositorios con múltiples contribuyentes. |
+| Prettier | Usamos prettier para formatear el código base y conseguir unsa salida visual consistente. Si no sabe por qué utilizamos Eslint y Prettier, puede leer el siguiente documento [Prettier vs. Linters][prettierEslint] en el sitio web de prettier. |
+| EditorConfig | El archivo `.editorconfig` en la raíz de cada proyecto configura su editor de código para usar un conjunto de reglas para la gestión de sangrías y espacios en blanco. Nuevamente, Prettier se usa para publicar el formato de su código y Editorconfig se usa para configurar el editor por adelantado. |
+| Conventional Changelog | Todos los commits en todos los repositorios utilizan [commitlint][] para aplicar mensajes de commit consistentes. |
+| Husky | Usamos [husky][] para hacer cumplir las convenciones de commits al enviar el código. Husky es un sistema git hooks escrito en Node. |
+| Vitest | Usamos [vitest][] para la ejecución de las pruebas. Optamos a usar este framework debido a su velocidad para el testing unitario y simplicidad de declaración. |
+
+## Comandos
+
+| Command | Description |
+|-------|--------|
+| `pnpm test` | Corre los tests del proyecto usando `vitest` en su modo watch. |
+| `pnpm test:run` | Corre los test del proyecto usando `vitest` pero solo se ejecuta y termina. |
+| `pnpm test:coverage` | Ejecuta los tests del proyecto tal cual los ejecuta `test:run`, pero adicional genera un reporte de cobertura de código.  |
+| `pnpm lint` | Aplica lint en el código usando ESlint |
+| `pnpm lint:check` | Verifica que el código cumpla la suite de reglas de ESlint |
+| `pnpm format` | Formatea el codígo base usando Prettier |
+| `pnpm format:check` | Verifica que el código cumpla el estilo de formato Prettier |
+
+[nodeCfdi]: https://github.com/nodecfdi/
+[prettierEslint]: https://prettier.io/docs/en/comparison.html
+[commitlint]: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+[husky]: https://typicode.github.io/husky/#/
+[vitest]: https://vitest.dev/

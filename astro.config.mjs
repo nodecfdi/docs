@@ -14,6 +14,7 @@ export default defineConfig({
         github: 'https://github.com/nodecfdi',
         discord: 'https://discord.gg/AsqX8fkW2k',
       },
+      favicon: '/favicon.ico',
       locales: {
         root: {
           label: 'Spanish',
@@ -23,7 +24,11 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Empezar',
-          items: [{ label: 'Manifiesto', link: '/getting-started/manifesto' }],
+          items: [
+            { label: 'Manifiesto', link: '/getting-started/manifesto' },
+            { label: 'Código de Conducta', link: '/getting-started/code-of-conduct' },
+            { label: 'Contribuciones', link: '/getting-started/contributing' },
+          ],
         },
       ],
       customCss: ['./src/styles/custom.css'],
