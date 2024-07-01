@@ -39,6 +39,7 @@ export default defineConfig({
                 { label: 'Instalación y uso', link: '/librarys/rfc/getting-started' },
                 { label: 'Rfc', link: '/librarys/rfc/rfc' },
                 { label: 'Generador - Fakes', link: '/librarys/rfc/fakers' },
+                { label: 'RFC a número', link: '/librarys/rfc/rfc-integer-converter' },
               ],
             },
           ],

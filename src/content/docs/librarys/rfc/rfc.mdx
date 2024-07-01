@@ -106,37 +106,162 @@ Método estatico que valida el RFC ingresado y retorna si es válido o no. Opcio
 import { Rfc } from '@nodecfdi/rfc';
 
 const rfc = 'DIM8701081LA';
-const rfcGenerico = 'XAXX010101000';
-const rfcForaneo = 'XEXX010101000';
 
 console.info(Rfc.isValid(rfc)); // Output: true
-console.info(Rfc.isValid(rfcGenerico)); // Output: true
-console.info(Rfc.isValid(rfcForaneo)); // Output: true
+console.info(Rfc.isValid(Rfc.RFC_GENERIC)); // Output: true
+console.info(Rfc.isValid(Rfc.RFC_FOREIGN)); // Output: true
 
-console.info(Rfc.isValid(rfcGenerico, Rfc.DISALLOW_GENERIC)); // Output: false
-console.info(Rfc.isValid(rfcForaneo, Rfc.DISALLOW_FOREIGN)); // Output: false
+console.info(Rfc.isValid(Rfc.RFC_GENERIC, Rfc.DISALLOW_GENERIC)); // Output: false
+console.info(Rfc.isValid(Rfc.RFC_FOREIGN, Rfc.DISALLOW_FOREIGN)); // Output: false
 
 console.info(Rfc.isValid(rfc, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: true
-console.info(Rfc.isValid(rfcGenerico, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: false
-console.info(Rfc.isValid(rfcForaneo, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: false
+console.info(Rfc.isValid(Rfc.RFC_GENERIC, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: false
+console.info(Rfc.isValid(Rfc.RFC_FOREIGN, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: false
 ```
-{/*
+
 ### checkIsValid
+
+Método estatico que valida el RFC ingresado y lanza un error en caso de no ser válido. Opcional se puede pasar flags para deshabilitar rfc generico y/o foraneo
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = 'DIM8701081LA';
+
+Rfc.checkIsValid(rfc); // No regresa nada pero no lanza error, por lo tanto es válido el RFC ingresado
+Rfc.checkIsValid(Rfc.RFC_GENERIC, Rfc.DISALLOW_GENERIC); // Error: No se permite el RFC genérico para público en general
+Rfc.checkIsValid(Rfc.RFC_FOREIGN, Rfc.DISALLOW_FOREIGN); // Error: No se permite el RFC genérico para operaciones con extranjeros
+Rfc.checkIsValid('COSC800113-7NA'); // Error: The RFC expression does not contain the valid parts
+```
 
 ### obtainDate
 
+Método estatico que obtiene la fecha en milisegundos dado un RFC válido.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = 'DIM8701081LA';
+// La fecha para este rfc es año: 87, mes: 01, dia: 08
+// La libreria parte la fecha desde 2000-01-01 por lo que la fecha para el rfc es:
+// 2087-01-08
+
+const dateInMilis = Rfc.obtainDate(rfc);
+console.info(dateInMilis); // Output: 3692844000000
+```
+
 ### getRfc
+
+Método que regresa el contenido de RFC, un string multibyte.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = Rfc.parse('CACX7605101P8');
+
+console.info(rfc.getRfc()); // Output: CACX7605101P8
+```
 
 ### isFisica
 
+Método que checa si el RFC es persona fisica.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfcFisica = Rfc.parse('COSC8001137NA');
+const rfcMoral = Rfc.parse('EKU9003173C9');
+
+console.info(rfcFisica.isFisica()); // Output: true
+console.info(rfcMoral.isFisica()); // Output: false
+```
+
 ### isMoral
+
+Método que checa si el RFC es persona moral.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfcFisica = Rfc.parse('COSC8001137NA');
+const rfcMoral = Rfc.parse('EKU9003173C9');
+
+console.info(rfcFisica.isMoral()); // Output: false
+console.info(rfcMoral.isMoral()); // Output: true
+```
 
 ### isGeneric
 
+Método que checa si el RFC es un RFC Generico Local.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = Rfc.parse('COSC8001137NA');
+const rfcGenerico = Rfc.newGeneric();
+
+console.info(rfc.isGeneric()); // Output: false
+console.info(rfcGenerico.isGeneric()); // Output: true
+```
+
 ### isForeign
+
+Método que checa si el RFC es un RFC Generico Foraneo.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = Rfc.parse('COSC8001137NA');
+const rfcForaneo = Rfc.newForaign();
+
+console.info(rfc.isForeign()); // Output: false
+console.info(rfcForaneo.isForeign()); // Output: true
+```
 
 ### calculateChecksum
 
+Método que calcula el digito verificador o checksum del RFC.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = Rfc.parse('COSC8001137NA');
+
+console.info(rfc.calculateChecksum()); // Output: 'A'
+```
+
+<Aside type="caution">
+  El campo `[Verificador]` es un dígito calculado, pero no hay un estándar publicado bien definido,
+  y se ha encontrado que a pesar de las reglas para obtenerlo existen RFC que no cumplen (ni pueden
+  cumplir) dicha regla, es como si el SAT simplemente hubiera seguido con el siguiente dígito para
+  un RFC de una misma entidad.
+</Aside>
+
 ### doesCheckSumMatch
 
-### calculateSerial */}
+Método que comprueba si el último caracter del RFC es el mismo que el calculado con el método `calculateChecksum()`.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = Rfc.parse('COSC8001137NA');
+
+console.info(rfc.doesCheckSumMatch()); // Output: true
+```
+
+<Aside type="caution">
+  Nuevamente existen casos en donde el digito verificador calculado no coincida con el registrado en
+  el RFC.
+</Aside>
+
+### calculateSerial
+
+Método que calcula el número serial (representación en número entero) del RFC.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = Rfc.parse('COSC8001137NA');
+
+console.info(rfc.calculateSerial()); // Output: 40270344269627
+```
