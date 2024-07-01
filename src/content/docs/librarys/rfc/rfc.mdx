@@ -1,0 +1,142 @@
+---
+title: Clase Rfc
+description: Guía de uso de la clase Rfc.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+El objeto clase Rfc es el core principal de la libreria y principalmente usarás está clase
+
+## Creación de objetos
+
+El objeto `Rfc` se puede crear a partir de cuatro formas. Y adicional a ellos existen dos metodos más para RFC generico y foraneo
+
+### parse
+
+Al crear por medio del método `parse` se validan los datos de entrada y surge una excepción si son inválidos.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+// Al proporcionar un rfc válido se crea el objeto RFC
+const rfc = Rfc.parse('CACX7605101P8');
+
+// Al proporcionar un rfc inválido se lanzara una excepción
+const rfcInvalid = Rfc.parse('COSC800113-7NA');
+// Error: The RFC expression does not contain the valid parts
+```
+
+<Aside type="tip">
+  Se recomienda que, siempre que se crea el objeto y los datos de origen no son de confianza, se
+  utilice esté método.
+</Aside>
+
+### parseOrNull
+
+Si se requiere crear sin arrojar un error, se puede hacer mediante el método `parseOrNull`, al igual que con el método `parse` se validan los datos de entrada pero si son inválidos retorna null.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+// Al proporcionar un rfc válido se crea el objeto RFC
+const rfc = Rfc.parseOrNull('CACX7605101P8');
+
+// Al proporcionar un rfc inválido, el valor sera null
+const rfcInvalid = Rfc.parseOrNull('COSC800113-7NA');
+// rfcInvalid: null
+```
+
+### unparsed
+
+Con el método `unparsed` no se validan los datos de entrada y se creará el objeto con la cadena de caracteres proporcionada como Rfc.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+// Se crea la instancia rfc
+const rfc = Rfc.unparsed('CACX7605101P8');
+console.info(rfc.toString()); // Output: 'CACX7605101P8'
+
+// Aún siendo incorrecto el RFC se crea una instancia de objeto RFC
+const rfcInvalid = Rfc.unparsed('COSC800113-7NA');
+console.info(rfcInvalid.toString()); // Output: 'COSC800113-7NA'
+```
+
+### fromSerial
+
+El método `fromSerial` convierte el número de serie del RFC a su representación de cadena de caracteres.
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+// Se crea la instancia rfc
+const rfc = Rfc.fromSerial(1348025748541);
+console.info(rfc.toString()); // Output: 'DIM8701081LA'
+```
+
+### newGeneric
+
+Método estatico que obtiene una instancia de `Rfc` del RFC generico "XAXX010101000".
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfcGenerico = Rfc.newGeneric();
+console.info(rfcGenerico.toString()); // Output: 'XAXX010101000'
+```
+
+### newForaign
+
+Método estatico que obtiene una instancia de `Rfc` del RFC foraneo "XEXX010101000".
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfcForaneo = Rfc.newForaign();
+console.info(rfcForaneo.toString()); // Output: 'XEXX010101000'
+```
+
+## Métodos y propiedades
+
+### isValid
+
+Método estatico que valida el RFC ingresado y retorna si es válido o no. Opcional se puede pasar flags para deshabilitar rfc generico y/o foraneo
+
+```ts
+import { Rfc } from '@nodecfdi/rfc';
+
+const rfc = 'DIM8701081LA';
+const rfcGenerico = 'XAXX010101000';
+const rfcForaneo = 'XEXX010101000';
+
+console.info(Rfc.isValid(rfc)); // Output: true
+console.info(Rfc.isValid(rfcGenerico)); // Output: true
+console.info(Rfc.isValid(rfcForaneo)); // Output: true
+
+console.info(Rfc.isValid(rfcGenerico, Rfc.DISALLOW_GENERIC)); // Output: false
+console.info(Rfc.isValid(rfcForaneo, Rfc.DISALLOW_FOREIGN)); // Output: false
+
+console.info(Rfc.isValid(rfc, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: true
+console.info(Rfc.isValid(rfcGenerico, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: false
+console.info(Rfc.isValid(rfcForaneo, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FOREIGN)); // Output: false
+```
+{/*
+### checkIsValid
+
+### obtainDate
+
+### getRfc
+
+### isFisica
+
+### isMoral
+
+### isGeneric
+
+### isForeign
+
+### calculateChecksum
+
+### doesCheckSumMatch
+
+### calculateSerial */}

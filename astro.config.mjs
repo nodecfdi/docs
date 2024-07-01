@@ -30,6 +30,19 @@ export default defineConfig({
             { label: 'Contribuciones', link: '/getting-started/contributing' },
           ],
         },
+        {
+          label: 'Librerias',
+          items: [
+            {
+              label: '@nodecfdi/rfc',
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/rfc/getting-started' },
+                { label: 'Rfc', link: '/librarys/rfc/rfc' },
+                { label: 'Generador - Fakes', link: '/librarys/rfc/fakers' },
+              ],
+            },
+          ],
+        },
       ],
       customCss: ['./src/styles/custom.css'],
     }),

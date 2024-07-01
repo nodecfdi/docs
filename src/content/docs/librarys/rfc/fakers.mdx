@@ -1,0 +1,50 @@
+---
+title: Generador de RFC
+description: Generadores ficticios para RFC.
+---
+
+Es común usar generadores (ficticios) de datos, esta librería provee la clase `RfcFaker` que se puede utilizar por sí sola.
+
+## Generadores
+
+### RFC Persona Física
+
+Para crear una cadena de caracteres para una clave RFC de una persona física (13 posiciones), usaremos el método a continuación:
+
+```ts
+import { RfcFaker } from '@nodecfdi/rfc';
+
+const faker = new RfcFaker();
+const rfcFisica = faker.mexicanRfcFisica();
+
+// La variable rfcFisica sera un string con algún RFC de 13 caracteres
+console.log(rfcFisica); // Por ejemplo: 'CACX7605101P8'
+```
+
+### RFC Persona Moral
+
+Para crear una cadena de caracteres para una clave RFC de una persona moral (12 posiciones), usaremos el método a continuación:
+
+```ts
+import { RfcFaker } from '@nodecfdi/rfc';
+
+const faker = new RfcFaker();
+const rfcMoral = faker.mexicanRfcMoral();
+
+// La variable rfcMoral sera un string con algún RFC de 12 caracteres
+console.log(rfcMoral); // Por ejemplo: 'EKU9003173C9'
+```
+
+### RFC Aleatorio
+
+Para crear una cadena de caracters para una clave RFC indistinta de una persona moral o física, usaremos el método a continuación:
+
+```ts
+import { RfcFaker } from '@nodecfdi/rfc';
+
+const faker = new RfcFaker();
+const rfc = faker.mexicanRfc();
+
+// La variable rfc sera un string con algún RFC de persona moral o fisica
+console.log(rfc); // Por ejemplo: 'EKU9003173C9' ó 'CACX7605101P8'
+```
