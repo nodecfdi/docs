@@ -34,6 +34,10 @@ export default defineConfig({
           label: 'Librerias',
           items: [
             {
+              label: '@nodecfdi/cfdi-core',
+              items: [{ label: 'Instalación y uso', link: '/librarys/cfdi-core/getting-started' }],
+            },
+            {
               label: '@nodecfdi/rfc',
               items: [
                 { label: 'Instalación y uso', link: '/librarys/rfc/getting-started' },

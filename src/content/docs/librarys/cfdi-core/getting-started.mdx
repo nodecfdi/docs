@@ -1,0 +1,124 @@
+---
+title: '@nodecfdi/cfdi-core'
+description: Comienza a utilizar la libreria CFDI core.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+La motivación de crear esta librería es contar con una herramienta flexible, rápida y confiable para
+trabajar con CFDI.
+
+Contiene parte de las estructuras de datos comun para trabajar un CFDI y/o representar un XML,
+ademas de proporcionar utilerias para convertir de un XML a un objeto manipulable y tambien a la
+inversa de un objeto manipulable a XML.
+
+## Primeros pasos
+
+### Instalación
+
+Para comenzar a utilizar la libreria lo primero que hay que hacer es instalarla, corre el siguiente
+comando en tu terminal:
+
+<Tabs syncKey="pkg">
+<TabItem label="npm">
+
+```sh
+npm i @nodecfdi/cfdi-core --save
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add @nodecfdi/cfdi-core
+```
+
+</TabItem>
+<TabItem label="Yarn">
+
+```sh
+yarn add @nodecfdi/cfdi-core
+```
+
+</TabItem>
+</Tabs>
+
+Con esto ya tendremos la libreria instalada y lista para ser usada.
+
+### Uso básico
+
+#### Estructura de datos XmlNode
+
+```ts
+import { XmlNode } from '@nodecfdi/cfdi-core';
+
+// Creación de un nodo con atributos
+const node = new XmlNode('root', { id: '1' });
+console.info(node.children().length); // Output: 0
+console.info(node.attributes().size); // Output: 1
+
+console.info(node.getAttribute('id')); // Output: '1'
+console.info(node.getAttribute('no-existe')); // Output: ''
+console.info(node.attributes().has('id')); // Output: true
+console.info(node.attributes().has('no-existe')); // Output: false
+
+node.setAttribute('key', 'value');
+console.info(node.getAttribute('key')); // Output: 'value'
+
+node.attributes().delete('id');
+console.info(node.getAttribute('id')); // Output: ''
+console.info(node.attributes().has('id')); // Output: false
+
+// Agregar nodo hijo
+const childrenNode = new XmlNode('children');
+node.addChild(childrenNode);
+console.info(node.children().length); // Output: 1
+
+// Recorrer la colección de atributos
+for (const [key, value] of node.attributes()) {
+  console.info(key, ': ', value);
+}
+
+// Recorrer la coleccion de nodos hijos
+for (const child of node) {
+  console.info('Nodo: ', child.name());
+}
+```
+
+#### Xml importar y exportar
+
+XmlNode a string XML
+
+```ts
+import { XmlNode, nodeToXmlString } from '@nodecfdi/cfdi-core';
+
+const node = new XmlNode('book', {}, [
+  new XmlNode('chapter', { toc: '1' }),
+  new XmlNode('chapter', { toc: '2' }),
+]);
+
+const xmlString = nodeToXmlString(node, true);
+```
+
+El ejemplo anterior dará como resultado
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+  <chapter toc="1"/>
+  <chapter toc="2"/>
+</book>
+```
+
+Xml a XmlNode
+
+```ts
+import { documentElement, newDocumentContent, nodeFromXmlElement } from '@nodecfdi/cfdi-core';
+
+const xmlString = '<?xml version="1.0" encoding="UTF-8"?><book><chapter toc="1"/><chapter toc="2"/></book>'
+const xmlDoc = newDocumentContent(xmlString);
+const node = nodeFromXmlElement(documentElement(xmlDoc));
+
+console.info(node.children().length); // Output: 2
+console.info(node.attributes().size); // Output: 0
+```
