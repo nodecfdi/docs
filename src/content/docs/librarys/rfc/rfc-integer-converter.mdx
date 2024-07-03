@@ -6,7 +6,7 @@ description: Conversión de RFC a su representación en número entero.
 La clave RFC se compone de 4 partes: `[Siglas] + [Fecha] + [Homoclave] + [Verificador]`.
 
 El campo `[Siglas]` son 4 o 3 caracteres dependiendo si se trata de una persona física (4) o moral
-(3). Además dw que incluyen las letras, se incluye `&` y `Ñ`, siendo la _eñe_ un símbolo de 2 bytes.
+(3). Además de que incluyen las letras, se incluye `&` y `Ñ`, siendo la _eñe_ un símbolo de 2 bytes.
 
 El campo `[Fecha]` es todo un tema, pues no usa 4 dígitos para el año, solo usa 2, luego entonces
 `000229` es inválido para `1900-02-29` pero válido para `2000-02-29`.
