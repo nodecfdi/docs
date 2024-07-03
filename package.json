@@ -22,6 +22,5 @@
     "sharp": "^0.33.4",
     "typescript": "^5.5.2"
   },
-  "prettier": "@nodecfdi/prettier-config",
   "packageManager": "pnpm@9.4.0"
 }

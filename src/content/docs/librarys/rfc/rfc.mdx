@@ -9,11 +9,13 @@ El objeto clase Rfc es el core principal de la libreria y principalmente usarás
 
 ## Creación de objetos
 
-El objeto `Rfc` se puede crear a partir de cuatro formas. Y adicional a ellos existen dos metodos más para RFC generico y foraneo
+El objeto `Rfc` se puede crear a partir de cuatro formas. Y adicional a ellos existen dos metodos
+más para RFC generico y foraneo
 
 ### parse
 
-Al crear por medio del método `parse` se validan los datos de entrada y surge una excepción si son inválidos.
+Al crear por medio del método `parse` se validan los datos de entrada y surge una excepción si son
+inválidos.
 
 ```ts
 import { Rfc } from '@nodecfdi/rfc';
@@ -33,7 +35,8 @@ const rfcInvalid = Rfc.parse('COSC800113-7NA');
 
 ### parseOrNull
 
-Si se requiere crear sin arrojar un error, se puede hacer mediante el método `parseOrNull`, al igual que con el método `parse` se validan los datos de entrada pero si son inválidos retorna null.
+Si se requiere crear sin arrojar un error, se puede hacer mediante el método `parseOrNull`, al igual
+que con el método `parse` se validan los datos de entrada pero si son inválidos retorna null.
 
 ```ts
 import { Rfc } from '@nodecfdi/rfc';
@@ -48,7 +51,8 @@ const rfcInvalid = Rfc.parseOrNull('COSC800113-7NA');
 
 ### unparsed
 
-Con el método `unparsed` no se validan los datos de entrada y se creará el objeto con la cadena de caracteres proporcionada como Rfc.
+Con el método `unparsed` no se validan los datos de entrada y se creará el objeto con la cadena de
+caracteres proporcionada como Rfc.
 
 ```ts
 import { Rfc } from '@nodecfdi/rfc';
@@ -64,7 +68,8 @@ console.info(rfcInvalid.toString()); // Output: 'COSC800113-7NA'
 
 ### fromSerial
 
-El método `fromSerial` convierte el número de serie del RFC a su representación de cadena de caracteres.
+El método `fromSerial` convierte el número de serie del RFC a su representación de cadena de
+caracteres.
 
 ```ts
 import { Rfc } from '@nodecfdi/rfc';
@@ -100,7 +105,8 @@ console.info(rfcForaneo.toString()); // Output: 'XEXX010101000'
 
 ### isValid
 
-Método estatico que valida el RFC ingresado y retorna si es válido o no. Opcional se puede pasar flags para deshabilitar rfc generico y/o foraneo
+Método estatico que valida el RFC ingresado y retorna si es válido o no. Opcional se puede pasar
+flags para deshabilitar rfc generico y/o foraneo
 
 ```ts
 import { Rfc } from '@nodecfdi/rfc';
@@ -121,7 +127,8 @@ console.info(Rfc.isValid(Rfc.RFC_FOREIGN, Rfc.DISALLOW_GENERIC | Rfc.DISALLOW_FO
 
 ### checkIsValid
 
-Método estatico que valida el RFC ingresado y lanza un error en caso de no ser válido. Opcional se puede pasar flags para deshabilitar rfc generico y/o foraneo
+Método estatico que valida el RFC ingresado y lanza un error en caso de no ser válido. Opcional se
+puede pasar flags para deshabilitar rfc generico y/o foraneo
 
 ```ts
 import { Rfc } from '@nodecfdi/rfc';
@@ -239,7 +246,8 @@ console.info(rfc.calculateChecksum()); // Output: 'A'
 
 ### doesCheckSumMatch
 
-Método que comprueba si el último caracter del RFC es el mismo que el calculado con el método `calculateChecksum()`.
+Método que comprueba si el último caracter del RFC es el mismo que el calculado con el método
+`calculateChecksum()`.
 
 ```ts
 import { Rfc } from '@nodecfdi/rfc';
