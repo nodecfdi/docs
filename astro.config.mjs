@@ -6,6 +6,9 @@ export default defineConfig({
   site: 'https://nodecfdi.com',
   integrations: [
     starlight({
+      editLink: {
+        baseUrl: 'https://github.com/nodecfdi/docs/edit/main/',
+      },
       title: 'NodeCfdi',
       tagline: 'Librerías de Node para trabajar con CFDI',
       description:
@@ -35,10 +38,19 @@ export default defineConfig({
           items: [
             {
               label: '@nodecfdi/cfdi-core',
+              collapsed: true,
               items: [{ label: 'Instalación y uso', link: '/librarys/cfdi-core/getting-started' }],
             },
             {
+              label: '@nodecfdi/cfdi-expresiones',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/cfdi-expresiones/getting-started' },
+              ],
+            },
+            {
               label: '@nodecfdi/rfc',
+              collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/rfc/getting-started' },
                 { label: 'Rfc', link: '/librarys/rfc/rfc' },
@@ -50,6 +62,8 @@ export default defineConfig({
         },
       ],
       customCss: ['./src/styles/custom.css'],
+      lastUpdated: true,
+      pagination: false,
     }),
   ],
 });
