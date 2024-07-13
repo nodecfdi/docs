@@ -1,0 +1,66 @@
+---
+title: '@nodecfdi/base-converter'
+description: Librería que convierte un numero entre bases arbitrarias.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Librería que convierte un numero entre bases arbitrarias
+
+## Primeros pasos
+
+### Instalación
+
+Para comenzar a utilizar la libreria lo primero que hay que hacer es instalarla, corre el siguiente
+comando en tu terminal:
+
+<Tabs syncKey="pkg">
+<TabItem label="npm">
+
+```sh
+npm i @nodecfdi/base-converter --save
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add @nodecfdi/base-converter
+```
+
+</TabItem>
+<TabItem label="Yarn">
+
+```sh
+yarn add @nodecfdi/base-converter
+```
+
+</TabItem>
+</Tabs>
+
+Con esto ya tendremos la libreria instalada y lista para ser usada.
+
+### Uso básico
+
+El convertidor espera tres parámetros: `input`, `fromBase`, `toBase`
+
+```ts
+import { BaseConverter } from '@nodecfdi/base-converter';
+// this is the main reason to exists of BaseConverter class
+// since parseInt and toString cannot handle large inputs
+const input = '3330303031303030303030333030303233373038';
+const converter = BaseConverter.createBase36();
+// result will be: 292233162870206001759766198425879490508935868472
+const result = converter.convert(input, 16, 10);
+```
+
+Alternativamente se puede definir cualquier sequencia y no es sensitivo a mayusculas o minusculas:
+
+```ts
+import { BaseConverter, BaseConverterSequence } from '@nodecfdi/base-converter';
+const hexSequence = new BaseConverterSequence('0123456789abCDEF');
+const converter = new BaseConverter(hexSequence);
+const input = 'FFff';
+// resut will be: 1111111111111111
+converter.convert(input, 16, 2);
+```

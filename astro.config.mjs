@@ -37,6 +37,13 @@ export default defineConfig({
           label: 'Librerias',
           items: [
             {
+              label: '@nodecfdi/base-converter',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/base-converter/getting-started' },
+              ],
+            },
+            {
               label: '@nodecfdi/cfdi-core',
               collapsed: true,
               items: [{ label: 'Instalación y uso', link: '/librarys/cfdi-core/getting-started' }],

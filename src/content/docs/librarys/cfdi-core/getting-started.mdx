@@ -115,7 +115,8 @@ Xml a XmlNode
 ```ts
 import { documentElement, newDocumentContent, nodeFromXmlElement } from '@nodecfdi/cfdi-core';
 
-const xmlString = '<?xml version="1.0" encoding="UTF-8"?><book><chapter toc="1"/><chapter toc="2"/></book>'
+const xmlString =
+  '<?xml version="1.0" encoding="UTF-8"?><book><chapter toc="1"/><chapter toc="2"/></book>';
 const xmlDoc = newDocumentContent(xmlString);
 const node = nodeFromXmlElement(documentElement(xmlDoc));
 
