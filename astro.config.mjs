@@ -56,6 +56,13 @@ export default defineConfig({
               ],
             },
             {
+              label: '@nodecfdi/cfdi-to-pdf',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/cfdi-to-pdf/getting-started' },
+              ],
+            },
+            {
               label: '@nodecfdi/rfc',
               collapsed: true,
               items: [

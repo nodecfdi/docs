@@ -13,14 +13,14 @@
   },
   "devDependencies": {
     "@nodecfdi/prettier-config": "^1.1.1",
-    "prettier": "^3.3.2"
+    "prettier": "^3.3.3"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.1",
-    "@astrojs/starlight": "^0.25.1",
-    "astro": "^4.11.5",
+    "@astrojs/check": "^0.9.1",
+    "@astrojs/starlight": "^0.25.3",
+    "astro": "^4.13.1",
     "sharp": "^0.33.4",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.6.0"
 }

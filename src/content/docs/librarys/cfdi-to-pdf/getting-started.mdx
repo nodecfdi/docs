@@ -1,0 +1,83 @@
+---
+title: '@nodecfdi/cfdi-to-pdf'
+description: Librería para crear un pdf basado en un XML CFDI o Retenciones.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+En algunos casos necesitas generar un archivo PDF desde un CFDI (Comprobante fiscal Digital por
+Internet), o constancia de retenciones. Esta librería te ayuda a crear un pdf genérico. Además
+puedes crear un boceto a tu gusto y acomodarlo a como lo requieras.
+
+## Primeros pasos
+
+Está libreria depende estrictamente de `@nodecfdi/cfdi-core`, `@nodecfdi/cfdi-expresiones`,
+`pdfmake` por lo que es recomendable instalarlas previo a instalar la libreria cfdi-to-pdf.
+
+### Instalación
+
+Para comenzar a utilizar la libreria lo primero que hay que hacer es instalarla, corre el siguiente
+comando en tu terminal:
+
+<Tabs syncKey="pkg">
+<TabItem label="npm">
+
+```sh
+npm i @nodecfdi/cfdi-to-pdf --save
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add @nodecfdi/cfdi-to-pdf
+```
+
+</TabItem>
+<TabItem label="Yarn">
+
+```sh
+yarn add @nodecfdi/cfdi-to-pdf
+```
+
+</TabItem>
+</Tabs>
+
+Con esto ya tendremos la libreria instalada y lista para ser usada.
+
+### Uso básico
+
+Para usarla basicamente es muy parecido entre la variante ServerSide y la variante ClientSide,
+difiere en que el modo ServerSide se puede guardar el archivo directamente en un path especificado,
+en cambio en ClientSide solo se puede obtener el base64 o el raw String.
+
+#### Uso ServerSide
+
+```ts
+import { nodeFromXmlString } from '@nodecfdi/cfdi-core';
+import { CfdiData, GenericCfdiTranslator } from '@nodecfdi/cfdi-to-pdf';
+import { PdfMakerBuilder } from '@nodecfdi/cfdi-to-pdf/node';
+
+const cfdi = '<cfdi:Comprobante>...</cfdi:Comprobante>';
+const comprobante = nodeFromXmlString(cfdi);
+const cfdiData = new CfdiData(comprobante);
+
+const builder = new PdfMakerBuilder(new GenericCfdiTranslator());
+const target = 'cfdi_target.pdf';
+await builder.build(cfdiData, target);
+```
+
+#### Uso ClientSide
+
+```ts
+import { nodeFromXmlString } from '@nodecfdi/cfdi-core';
+import { CfdiData, GenericCfdiTranslator } from '@nodecfdi/cfdi-to-pdf';
+import { PdfMakerBuilder } from '@nodecfdi/cfdi-to-pdf/browser';
+
+const cfdi = '<cfdi:Comprobante>...</cfdi:Comprobante>';
+const comprobante = nodeFromXmlString(cfdi);
+const cfdiData = new CfdiData(comprobante);
+
+const builder = new PdfMakerBuilder(new GenericCfdiTranslator());
+const base64 = await builder.buildBase64(cfdiData);
+```
