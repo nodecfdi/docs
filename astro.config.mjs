@@ -81,6 +81,10 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: 'Referencias',
+          items: [{ label: 'Solución de problemas', link: '/reference/troubleshooting' }],
+        },
       ],
       customCss: ['./src/styles/custom.css'],
       lastUpdated: true,

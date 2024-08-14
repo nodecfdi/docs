@@ -1,0 +1,22 @@
+---
+title: Solución a problemas
+description: Resolver problemas comunes y/o de uso de las librerias.
+---
+
+Como resolver algunos de los problemas tipicos.
+
+## Errores comunes
+
+### Cannot find module or its corresponding type declarations.
+
+Esté error es ocasionado por la configuración del `tsconfig`, asegurate de que en las opciones de
+compilación tengas lo siguiente:
+
+```json
+{
+  "compilerOptions": {
+    // Other configs
+    "module": "NodeNext"
+  }
+}
+```
