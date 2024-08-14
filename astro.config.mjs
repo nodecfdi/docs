@@ -63,6 +63,13 @@ export default defineConfig({
               ],
             },
             {
+              label: '@nodecfdi/credentials',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/credentials/getting-started' },
+              ],
+            },
+            {
               label: '@nodecfdi/rfc',
               collapsed: true,
               items: [
