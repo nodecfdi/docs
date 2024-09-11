@@ -44,6 +44,14 @@ export default defineConfig({
               ],
             },
             {
+              label: '@nodecfdi/cfdi-cleaner',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/cfdi-cleaner/getting-started' },
+                { label: 'Limpiadores', link: '/librarys/cfdi-cleaner/cleaners' },
+              ],
+            },
+            {
               label: '@nodecfdi/cfdi-core',
               collapsed: true,
               items: [{ label: 'Instalación y uso', link: '/librarys/cfdi-core/getting-started' }],

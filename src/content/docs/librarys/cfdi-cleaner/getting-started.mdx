@@ -1,0 +1,100 @@
+---
+title: '@nodecfdi/cfdi-cleaner'
+description: Librería para limpiar comprobantes fiscales digitales v3.3 y v4.0.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Los archivos XML de Comprobantes Fiscales Digitales por Internet (CFDI) suelen contener errores.
+Esta librería se encarga de reparar los errores (reparables) conocidos/comunes para poder trabajar
+con ellos.
+
+Todas las operaciones que realiza esta librería con sobre partes del CFDI que no influyen en la
+generación de la cadena de origen ni del sello. Inspirada por la versión para php
+https://github.com/phpcfdi/cfdi-cleaner
+
+## Primeros pasos
+
+Está libreria depende estrictamente de `@nodecfdi/cfdi-core` por lo que es recomendable instalarla
+previo a instalar la libreria cfdi-cleaner.
+
+### Instalación
+
+Para comenzar a utilizar la libreria lo primero que hay que hacer es instalarla, corre el siguiente
+comando en tu terminal:
+
+<Tabs syncKey="pkg">
+<TabItem label="npm">
+
+```sh
+npm i @nodecfdi/cfdi-cleaner --save
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add @nodecfdi/cfdi-cleaner
+```
+
+</TabItem>
+<TabItem label="Yarn">
+
+```sh
+yarn add @nodecfdi/cfdi-cleaner
+```
+
+</TabItem>
+</Tabs>
+
+Con esto ya tendremos la libreria instalada y lista para ser usada.
+
+### Uso básico
+
+La clase de trabajo es `Cleaner` y ofrece los siguientes métodos de limpieza:
+
+#### staticClean(xml: string): string
+
+Realiza la limpieza de texto y del documento xml a partir de una cadena de caracteres y entrega la
+representación limpia también en texto.
+
+Este método es estático, por lo que no se necesita crear una instancia del objeto `Cleaner`.
+
+```ts
+import { Cleaner } from '@nodecfdi/cfdi-cleaner';
+
+const xml = '<cfdi:Comprobante>...</cfdi:Comprobante>';
+const resultCleaned = Cleaner.staticClean(xml);
+console.info(resultCleaned); // XML LIMPIO
+```
+
+#### cleanStringToString(xml: string): string
+
+Realiza la limpieza de texto y del documento xml a partir de una cadena de caracteres y entrega la
+representación limpia tambien en texto.
+
+```ts
+import { Cleaner } from '@nodecfdi/cfdi-cleaner';
+
+const xml = '<cfdi:Comprobante>...</cfdi:Comprobante>';
+const cleaner = new Cleaner();
+const resultCleaned = cleaner.cleanStringToString(xml);
+console.info(resultCleaned); // XML LIMPIO
+```
+
+#### cleanStringToDocument(xml: string): Document
+
+Realiza la limpieza de texto y del documento xml a partir de una cadena de caracteres y entrega el
+documento XML limpio. Este método es útil si se necesita utilizar inmediatamente el objeto documento
+XML.
+
+```ts
+import { Cleaner } from '@nodecfdi/cfdi-cleaner';
+import { getSerializer } from '@nodecfdi/cfdi-core';
+
+const xml = '<cfdi:Comprobante>...</cfdi:Comprobante>';
+const cleaner = new Cleaner();
+const xmlDocument = cleaner.cleanStringToDocument(xml);
+const xmlString = getSerializer().serializeToString(xmlDocument);
+console.info(xmlString); // XML LIMPIO
+```
