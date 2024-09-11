@@ -57,6 +57,13 @@ export default defineConfig({
               items: [{ label: 'Instalación y uso', link: '/librarys/cfdi-core/getting-started' }],
             },
             {
+              label: '@nodecfdi/cfdi-elements',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/cfdi-elements/getting-started' },
+              ],
+            },
+            {
               label: '@nodecfdi/cfdi-expresiones',
               collapsed: true,
               items: [
