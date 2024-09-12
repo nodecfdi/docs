@@ -71,6 +71,14 @@ export default defineConfig({
               ],
             },
             {
+              label: '@nodecfdi/cfdi-to-json',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/cfdi-to-json/getting-started' },
+                { label: 'Acerca de', link: '/librarys/cfdi-to-json/about' },
+              ],
+            },
+            {
               label: '@nodecfdi/cfdi-to-pdf',
               collapsed: true,
               items: [

@@ -1,0 +1,41 @@
+---
+title: Funcionamiento interno
+description: ¿Como funciona la libreria cfdi-to-json?.
+---
+
+La conversión parte de un objeto `Document` que es recorrido nodo a nodo y en cada transformación
+genera un objeto de tipo `Node` que contiene sus propiedades básicas de nombre, ruta, atributos e
+hijos. Los hijos (`Children`) son una colección de nodos `Node`.
+
+Al momento de exportar a un `Record<key, value>` `Node.toRecord()` es cuando se resuelve si los
+nodos deben agregarse como llaves directas a objetos o bien como arreglos de objetos.
+
+### Elementos con múltiples apariciones
+
+Para detectar los elementos con múltiples apariciones esta librería contiene un archivo
+`src/source/default_paths.ts` con el listado de rutas de elementos que pueden aparecer más de una
+vez.
+
+### Nodos con texto
+
+El texto o valor que contenga algún nodo XML es exportado a una llave de cadena vacía en el JSON
+resultante. Por ejemplo, el siguiente XML:
+
+```xml
+<detallista:orderIdentification>
+    <detallista:referenceIdentification type="ON">3</detallista:referenceIdentification>
+</detallista:orderIdentification>
+```
+
+Genera el siguiente JSON:
+
+```json
+{
+  "orderIdentification": {
+    "referenceIdentification": {
+      "": "3",
+      "type": "ON"
+    }
+  }
+}
+```
