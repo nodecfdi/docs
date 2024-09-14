@@ -37,14 +37,14 @@ export default defineConfig({
           label: 'Librerias',
           items: [
             {
-              label: '@nodecfdi/base-converter',
+              label: 'base-converter',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/base-converter/getting-started' },
               ],
             },
             {
-              label: '@nodecfdi/cfdi-cleaner',
+              label: 'cfdi-cleaner',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/cfdi-cleaner/getting-started' },
@@ -52,26 +52,26 @@ export default defineConfig({
               ],
             },
             {
-              label: '@nodecfdi/cfdi-core',
+              label: 'cfdi-core',
               collapsed: true,
               items: [{ label: 'Instalación y uso', link: '/librarys/cfdi-core/getting-started' }],
             },
             {
-              label: '@nodecfdi/cfdi-elements',
+              label: 'cfdi-elements',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/cfdi-elements/getting-started' },
               ],
             },
             {
-              label: '@nodecfdi/cfdi-expresiones',
+              label: 'cfdi-expresiones',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/cfdi-expresiones/getting-started' },
               ],
             },
             {
-              label: '@nodecfdi/cfdi-to-json',
+              label: 'cfdi-to-json',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/cfdi-to-json/getting-started' },
@@ -79,27 +79,37 @@ export default defineConfig({
               ],
             },
             {
-              label: '@nodecfdi/cfdi-to-pdf',
+              label: 'cfdi-to-pdf',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/cfdi-to-pdf/getting-started' },
               ],
             },
             {
-              label: '@nodecfdi/credentials',
+              label: 'credentials',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/credentials/getting-started' },
               ],
             },
             {
-              label: '@nodecfdi/rfc',
+              label: 'rfc',
               collapsed: true,
               items: [
                 { label: 'Instalación y uso', link: '/librarys/rfc/getting-started' },
                 { label: 'Rfc', link: '/librarys/rfc/rfc' },
                 { label: 'Generador - Fakes', link: '/librarys/rfc/fakers' },
                 { label: 'RFC a número', link: '/librarys/rfc/rfc-integer-converter' },
+              ],
+            },
+            {
+              label: 'xml-schema-validator',
+              collapsed: true,
+              items: [
+                {
+                  label: 'Instalación y uso',
+                  link: '/librarys/xml-schema-validator/getting-started',
+                },
               ],
             },
           ],
