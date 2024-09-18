@@ -1,0 +1,69 @@
+---
+title: '@nodecfdi/xml-resource-retriever'
+description: XSD and XLST resource downloader for local storage.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+El propósito de esta libreria es descargar recursivamente recursos XML desde Internet a un
+almacenamiento local para su uso posterior. Por el momento solo permite esquemas (XSL) y
+transformaciones (XSLT) pero es fácilmente extensible implementando la interfaz `RetrieverInterface`
+o extendiendo la clase `AbstractXmlRetriever`.
+
+Para cada archivo descargado, anulará su dependencia de una ubicación relativa, de esta manera, cada
+dependencia debe estar disponible para trabajar sin conexión.
+
+Pueden usar el objeto local `NodeDownloader` que simplemente usa la función de copia para obtener y
+almacenar un archivo desde internet. También puedes utilizar tu propia implementacion de
+`DownloaderInterface` según sus necesidades.
+
+Basado en el repo de la versión php: https://github.com/eclipxe13/XmlResourceRetriever
+
+## Primeros pasos
+
+Está libreria depende estrictamente de `@nodecfdi/cfdi-core` por lo que es recomendable instalarla
+previo a instalar la libreria xml-resource-retriever.
+
+### Instalación
+
+Para comenzar a utilizar la libreria lo primero que hay que hacer es instalarla, corre el siguiente
+comando en tu terminal:
+
+<Tabs syncKey="pkg">
+<TabItem label="npm">
+
+```sh
+npm i @nodecfdi/xml-resource-retriever --save
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add @nodecfdi/xml-resource-retriever
+```
+
+</TabItem>
+<TabItem label="Yarn">
+
+```sh
+yarn add @nodecfdi/xml-resource-retriever
+```
+
+</TabItem>
+</Tabs>
+
+Con esto ya tendremos la libreria instalada y lista para ser usada.
+
+### Uso básico
+
+```ts
+import { XsltRetriever } from '@nodecfdi/xml-resource-retriever';
+
+const xslt = new XsltRetriever('/project/cache');
+const local = await xslt.retrieve(
+  'http://www.sat.gob.mx/sitio_internet/cfd/3/cadenaoriginal_3_3/cadenaoriginal_3_3.xslt',
+);
+
+console.info(local); // "/project/cache/www.sat.gob.mx/sitio_internet/cfd/3/cadenaoriginal_3_3/cadenaoriginal_3_3.xslt"
+```

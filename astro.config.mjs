@@ -103,6 +103,17 @@ export default defineConfig({
               ],
             },
             {
+              label: 'xml-resource-retriever',
+              collapsed: true,
+              items: [
+                {
+                  label: 'Instalación y uso',
+                  link: '/librarys/xml-resource-retriever/getting-started',
+                },
+                { label: 'Acerca de', link: '/librarys/xml-resource-retriever/about' },
+              ],
+            },
+            {
               label: 'xml-schema-validator',
               collapsed: true,
               items: [

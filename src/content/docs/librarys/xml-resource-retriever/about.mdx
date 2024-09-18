@@ -1,0 +1,38 @@
+---
+title: Funcionamiento interno retriever
+description: Mas información acerca de xml-resource-retriever.
+---
+
+Los siguientes métodos se aplican a `XsdRetriever` y `XsltRetriever`
+
+### Metódo retrieve(url: string)
+
+Descarga recursivamente una URL y guarda en la ruta base del retriever, cambia los elementos
+secundarios que contiene referencias a otros archivos.
+
+### Metódo download(url: string)
+
+Descarga una URL y guarda en la ruta base del retriever. No valida el archivo xml para posibles
+errores. No descarga dependencias.
+
+### Metódo buildPath(url: string)
+
+Devuelve la ubicación donde se debe almacenar un archivo de acuerdo con la ruta base.
+
+### Metódo setDownloader(downloader: DownloaderInterface)
+
+Cambia el downloader predeterminado a una implementación personalizada. Por defecto es
+`NodeDownloader`.
+
+### Retrievers
+
+La libreria tiene dos clases retriever: `XsdRetriever` y `XsltRetriever`
+
+#### XsdRetriever
+
+Busca los elementos `import` e `include` del espacio de nombres `http://www.w3.org/2001/XMLSchema`.
+
+#### XsltRetriever
+
+Busca los elementos `import` e `include` del espacio de nombres
+`http://www.w3.org/1999/XSL/Transform`.
