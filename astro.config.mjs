@@ -103,6 +103,15 @@ export default defineConfig({
               ],
             },
             {
+              label: 'sat-estado-cfdi',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/sat-estado-cfdi/getting-started' },
+                { label: 'Acerca de', link: '/librarys/sat-estado-cfdi/about' },
+                { label: 'Actualizacion', link: '/librarys/sat-estado-cfdi/migration' },
+              ],
+            },
+            {
               label: 'xml-resource-retriever',
               collapsed: true,
               items: [

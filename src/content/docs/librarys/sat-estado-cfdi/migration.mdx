@@ -1,0 +1,17 @@
+---
+title: Actualización entre versiones
+description: Actualizar de una version anterior de sat-estado-cfdi.
+---
+
+### Actualizar de la version 2.x a la 3.x
+
+Para esta nueva versión hay cambios relevantes:
+
+- La version mínima es ahora NodeJS 18.x, se agrega NodeJS 22.x a la matriz de pruebas.
+- Se fusiona `@nodecfdi/sat-estado-cfdi-soap` en `@nodecfdi/sat-estado-cfdi`.
+- Se usan propiedades públicas de solo lectura en lugar de metodos.
+- Se mueven las constantes an un archivo especifico `Constants`.
+
+En un uso normal a la libreria, solo debes remover el paquete `@nodecfdi/sat-estado-cfdi-soap` y
+actualizar los imports para usar los nuevos clientes proporcionados. Actualmente solo existen dos
+clientes `fetch` y `axios`.

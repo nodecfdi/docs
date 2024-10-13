@@ -1,0 +1,90 @@
+---
+title: '@nodecfdi/sat-estado-cfdi'
+description: Consulta el estado de un cfdi en el webservice del SAT.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Esta librería contiene objetos de ayuda para consumir el Servicio de Consulta de CFDI del SAT. La
+documentación del proyecto está en español porque ese es el lenguaje de los usuarios que la
+utilizarán.
+
+Esta librería está inspirada en: https://github.com/phpcfdi/sat-estado-cfdi/
+
+## Primeros pasos
+
+Está libreria depende estrictamente de `@nodecfdi/cfdi-core` por lo que es recomendable instalarla
+previo a instalar la libreria sat-estado-cfdi.
+
+### Instalación
+
+Para comenzar a utilizar la libreria lo primero que hay que hacer es instalarla, corre el siguiente
+comando en tu terminal:
+
+<Tabs syncKey="pkg">
+<TabItem label="npm">
+
+```sh
+npm i @nodecfdi/sat-estado-cfdi --save
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add @nodecfdi/sat-estado-cfdi
+```
+
+</TabItem>
+<TabItem label="Yarn">
+
+```sh
+yarn add @nodecfdi/sat-estado-cfdi
+```
+
+</TabItem>
+</Tabs>
+
+Con esto ya tendremos la libreria instalada y lista para ser usada.
+
+### Uso básico
+
+Usando fetch disponible en NodeJS y BrowserApi.
+
+```ts
+import { Consumer } from '@nodecfdi/sat-estado-cfdi';
+import { FetchConsumerClient } from '@nodecfdi/sat-estado-cfdi/clients/fetch';
+
+// La siguiente expresion puede ser generada por @nodecfdi/cfdi-expresiones
+const expression = '...myexpression';
+
+const client = new FetchConsumerClient();
+const consumer = new Consumer(client);
+const response = await consumer.execute(expression);
+
+console.info(response.query.isFound()); // Se puede saber si la factura fue encontrada
+console.info(response.document.isActive()); // Si esta activa
+
+console.info(response.rawResponse); // Obtener la respuesta obtenida tal cual fue recibida.
+```
+
+#### Usando axios
+
+Para ello es importante tener la dependencia de `axios` en el proyecto antes de usar este cliente.
+
+```ts
+import { Consumer } from '@nodecfdi/sat-estado-cfdi';
+import { AxiosConsumerClient } from '@nodecfdi/sat-estado-cfdi/clients/axios';
+
+// La siguiente expresion puede ser generada por @nodecfdi/cfdi-expresiones
+const expression = '...myexpression';
+
+const client = new AxiosConsumerClient();
+const consumer = new Consumer(client);
+const response = await consumer.execute(expression);
+
+console.info(response.query.isFound()); // Se puede saber si la factura fue encontrada
+console.info(response.document.isActive()); // Si esta activa
+
+console.info(response.rawResponse); // Obtener la respuesta obtenida tal cual fue recibida.
+```
