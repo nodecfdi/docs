@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeRapide from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://nodecfdi.com',
   integrations: [
     starlight({
+      plugins: [starlightThemeRapide()],
       editLink: {
         baseUrl: 'https://github.com/nodecfdi/docs/edit/main/',
       },

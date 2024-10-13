@@ -20,6 +20,9 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      starlight-theme-rapide:
+        specifier: ^0.2.1
+        version: 0.2.1(@astrojs/starlight@0.28.3(astro@4.16.2(rollup@4.21.2)(typescript@5.6.3)))
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -1854,6 +1857,12 @@ packages:
 
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
+
+  starlight-theme-rapide@0.2.1:
+    resolution: {integrity: sha512-hhoFof2QQk7Z0L2vfDA+x2A13OrziziC6esTmErM2olhoHomwzItstyVrakFkfBtSjKOj9TqThny76UkqIP6xA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.28.0'
 
   stdin-discarder@0.2.2:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
@@ -4693,6 +4702,10 @@ snapshots:
   space-separated-tokens@2.0.2: {}
 
   sprintf-js@1.0.3: {}
+
+  starlight-theme-rapide@0.2.1(@astrojs/starlight@0.28.3(astro@4.16.2(rollup@4.21.2)(typescript@5.6.3))):
+    dependencies:
+      '@astrojs/starlight': 0.28.3(astro@4.16.2(rollup@4.21.2)(typescript@5.6.3))
 
   stdin-discarder@0.2.2: {}
 
