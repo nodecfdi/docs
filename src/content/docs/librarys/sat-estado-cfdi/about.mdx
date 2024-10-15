@@ -32,56 +32,61 @@ ejemplo `response.document.isCancelled()`.
 Posibles estados:
 
 - `CodigoEstatus`: `query: QueryStatus`.
-    - `Found`: Si el estado inicia con `S - `.
-    - `NotFound`: en cualquier otro caso.
+
+  - `Found`: Si el estado inicia con `S - `.
+  - `NotFound`: en cualquier otro caso.
 
 - `Estado`: `document: DocumentStatus`.
-    - `Active`: Si el estado reportó `Vigente`.
-    - `Cancelled`: Si el estado reportó `Cancelado`.
-    - `NotFound`: en cualquier otro caso.
+
+  - `Active`: Si el estado reportó `Vigente`.
+  - `Cancelled`: Si el estado reportó `Cancelado`.
+  - `NotFound`: en cualquier otro caso.
 
 - `EsCancelable`: `cancellable: CancellableStatus`.
-    - `CancellableByDirectCall`: Si el estado reportó `Cancelable sin aceptación`.
-    - `CancellableByApproval`: Si el estado reportó `Cancelable con aceptación`.
-    - `NotCancellable`: en cualquier otro caso.
+
+  - `CancellableByDirectCall`: Si el estado reportó `Cancelable sin aceptación`.
+  - `CancellableByApproval`: Si el estado reportó `Cancelable con aceptación`.
+  - `NotCancellable`: en cualquier otro caso.
 
 - `EstatusCancelacion`: `cancellation: CancellationStatus`.
-    - `CancelledByDirectCall`: Si el estado reportó `Cancelado sin aceptación`.
-    - `CancelledByApproval`: Si el estado reportó `Cancelado con aceptación`.
-    - `CancelledByExpiration`: Si el estado reportó `Plazo vencido`.
-    - `Pending`: Si el estado reportó `En proceso`.
-    - `Disapproved`: Si el estado reportó `Solicitud rechazada`.
-    - `Undefined`: en cualquier otro caso.
+
+  - `CancelledByDirectCall`: Si el estado reportó `Cancelado sin aceptación`.
+  - `CancelledByApproval`: Si el estado reportó `Cancelado con aceptación`.
+  - `CancelledByExpiration`: Si el estado reportó `Plazo vencido`.
+  - `Pending`: Si el estado reportó `En proceso`.
+  - `Disapproved`: Si el estado reportó `Solicitud rechazada`.
+  - `Undefined`: en cualquier otro caso.
 
 - `ValidacionEFOS`: `efos: EfosStatus`.
-    - `Included`: Si el estado no reportó `200` o `201`.
-    - `Excluded`: Si el estado reportó `200` o `201`.
-
+  - `Included`: Si el estado no reportó `200` o `201`.
+  - `Excluded`: Si el estado reportó `200` o `201`.
 
 #### Estados mutuamente excluyentes
 
 | CodigoEstatus | Estado    | EsCancelable              | EstatusCancelacion       | Explicación                                               |
-|---------------|-----------|---------------------------|--------------------------|-----------------------------------------------------------|
-| N - ...       | *         | *                         | *                        | El SAT no sabe del CFDI con la expresión dada             |
-| S - ...       | Cancelado | *                         | Plazo vencido            | Cancelado por plazo vencido                               |
-| S - ...       | Cancelado | *                         | Cancelado con aceptación | Cancelado con aceptación del receptor                     |
-| S - ...       | Cancelado | *                         | Cancelado sin aceptación | No fue requerido preguntarle al receptor y se canceló     |
-| S - ...       | Vigente   | No cancelable             | *                        | No se puede cancelar                                      |
-| S - ...       | Vigente   | Cancelable sin aceptación | *                        | Se puede cancelar, pero no se ha realizado la cancelación |
+| ------------- | --------- | ------------------------- | ------------------------ | --------------------------------------------------------- |
+| N - ...       | \*        | \*                        | \*                       | El SAT no sabe del CFDI con la expresión dada             |
+| S - ...       | Cancelado | \*                        | Plazo vencido            | Cancelado por plazo vencido                               |
+| S - ...       | Cancelado | \*                        | Cancelado con aceptación | Cancelado con aceptación del receptor                     |
+| S - ...       | Cancelado | \*                        | Cancelado sin aceptación | No fue requerido preguntarle al receptor y se canceló     |
+| S - ...       | Vigente   | No cancelable             | \*                       | No se puede cancelar                                      |
+| S - ...       | Vigente   | Cancelable sin aceptación | \*                       | Se puede cancelar, pero no se ha realizado la cancelación |
 | S - ...       | Vigente   | Cancelable con aceptación | (ninguno)                | Se puede cancelar, pero no se ha realizado la solicitud   |
 | S - ...       | Vigente   | Cancelable con aceptación | En proceso               | Se hizo la solicitud y está en espera de respuesta        |
 | S - ...       | Vigente   | Cancelable con aceptación | Solicitud rechazada      | Se hizo la solicitud y fue rechazada                      |
 
-Cuando tienes un CFDI en estado *Cancelable con aceptación*
-y mandas a hacer la cancelación entonces su estado de cancelación cambiaría a *En proceso*.
+Cuando tienes un CFDI en estado _Cancelable con aceptación_ y mandas a hacer la cancelación entonces
+su estado de cancelación cambiaría a _En proceso_.
 
-El receptor puede aceptar la cancelación (*Cancelado con aceptación*) o rechazarla (*Solicitud rechazada*).
+El receptor puede aceptar la cancelación (_Cancelado con aceptación_) o rechazarla (_Solicitud
+rechazada_).
 
-Si es la *primera vez* que se hace la solicitud, el receptor tiene 72 horas para aceptarla o rechazarla,
-si no lo hace entonces automáticamente será cancelada (*Plazo vencido*).
+Si es la _primera vez_ que se hace la solicitud, el receptor tiene 72 horas para aceptarla o
+rechazarla, si no lo hace entonces automáticamente será cancelada (_Plazo vencido_).
 
-Podrías volver a enviar la solicitud de cancelación *por segunda vez* aun cuando la solicitud fue previamente rechazada.
+Podrías volver a enviar la solicitud de cancelación _por segunda vez_ aun cuando la solicitud fue
+previamente rechazada.
 
-En ese caso, el receptor puede aceptar o rechazar la cancelación, pero ya no aplicará un lapso de 72 horas.
-Por lo anterior entonces podrías tener el CFDI en estado de cancelación *en proceso* indefinidamente.
-Incluso, que la cancelación suceda meses después de lo esperado.
+En ese caso, el receptor puede aceptar o rechazar la cancelación, pero ya no aplicará un lapso de 72
+horas. Por lo anterior entonces podrías tener el CFDI en estado de cancelación _en proceso_
+indefinidamente. Incluso, que la cancelación suceda meses después de lo esperado.
