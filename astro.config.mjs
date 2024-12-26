@@ -114,6 +114,14 @@ export default defineConfig({
               ],
             },
             {
+              label: 'sat-micro-catalogs',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/sat-micro-catalogs/getting-started' },
+                { label: 'Catalogos', link: '/librarys/sat-micro-catalogs/catalogs' },
+              ],
+            },
+            {
               label: 'xml-resource-retriever',
               collapsed: true,
               items: [

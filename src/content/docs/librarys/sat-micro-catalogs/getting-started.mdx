@@ -1,0 +1,71 @@
+---
+title: '@nodecfdi/sat-micro-catalogs'
+description: Micro Catálogos CFDI del SAT.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Esta librería expone los catalogos de SAT en formato json, solo aquellos que tienen menos de 100
+filas. Además contiene helpers para trabajar con estos archivos y sus valores.
+
+## Primeros pasos
+
+### Instalación
+
+Para comenzar a utilizar la libreria lo primero que hay que hacer es instalarla, corre el siguiente
+comando en tu terminal:
+
+<Tabs syncKey="pkg">
+<TabItem label="npm">
+
+```sh
+npm i @nodecfdi/sat-micro-catalogs --save
+```
+
+</TabItem>
+<TabItem label="pnpm">
+
+```sh
+pnpm add @nodecfdi/sat-micro-catalogs
+```
+
+</TabItem>
+<TabItem label="Yarn">
+
+```sh
+yarn add @nodecfdi/sat-micro-catalogs
+```
+
+</TabItem>
+</Tabs>
+
+Con esto ya tendremos la libreria instalada y lista para ser usada.
+
+### Uso básico
+
+```ts
+// Importamos el catalogo en json raw
+import cfdi40ImpuestosRaw from '@nodecfdi/sat-micro-catalogs/raw/cfdi_40_impuestos' assert { type: 'json' };
+import { wrapCatalog } from '@nodecfdi/sat-micro-catalogs';
+
+// Usando tal cual el catalogo en json raw ya podemos iterar sobre sus datos
+for (const catalogoItem in cfdi40ImpuestosRaw) {
+  console.info(catalogoItem); // { id: '001', texto: 'ISR', ... }
+}
+
+// También podemos optar por usar el catalogo con un wrapper que agrega algunas funcionalidades como etiqueta y busqueda
+const cfdi40Impuestos = wrapCatalog(cfdi40ImpuestosRaw);
+
+// Podemos iterar sobre los datos del catalogo usando el wrapper
+for (const catalogoItem of cfdi40Impuestos) {
+  console.info(catalogoItem); // { id: '001', texto: 'ISR', etiqueta: '001 - ISR', ... }
+}
+
+// También podemos buscar y regresar un elemento específico en el catalogo usando el wrapper para etiquetas
+const isr = cfdi40Impuestos.findAndReturnEtiqueta('001');
+console.info(isr); // '001 - ISR'
+
+// También podemos buscar y regresar un elemento específico en el catalogo usando el wrapper para texto
+const isr = cfdi40Impuestos.findAndReturnTexto('001');
+console.info(isr); // 'ISR'
+```
