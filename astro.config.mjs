@@ -42,7 +42,10 @@ export default defineConfig({
               label: 'adonisjs-sat-catalogs',
               collapsed: true,
               items: [
-                { label: 'Instalación y uso', link: '/librarys/adonisjs-sat-catalogs/getting-started' },
+                {
+                  label: 'Instalación y uso',
+                  link: '/librarys/adonisjs-sat-catalogs/getting-started',
+                },
               ],
             },
             {
@@ -124,7 +127,10 @@ export default defineConfig({
               label: 'sat-micro-catalogs',
               collapsed: true,
               items: [
-                { label: 'Instalación y uso', link: '/librarys/sat-micro-catalogs/getting-started' },
+                {
+                  label: 'Instalación y uso',
+                  link: '/librarys/sat-micro-catalogs/getting-started',
+                },
                 { label: 'Catalogos', link: '/librarys/sat-micro-catalogs/catalogs' },
               ],
             },

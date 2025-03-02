@@ -22,7 +22,8 @@ Con esto ya tendremos la libreria instalada y lista para ser usada.
 
 ### Configuración
 
-Una vez instalada la libreria debemos configurarla, la manera más sencilla es actualizando el archivo `config/database.ts`, agregando la conexión:
+Una vez instalada la libreria debemos configurarla, la manera más sencilla es actualizando el
+archivo `config/database.ts`, agregando la conexión:
 
 ```ts
 // Other imports
@@ -41,7 +42,8 @@ import app from '@adonisjs/core/services/app';
 //
 ```
 
-Si quieres configurar la base de datos para que sea solo de lectura puedes configurar la conexión de la siguiente manera:
+Si quieres configurar la base de datos para que sea solo de lectura puedes configurar la conexión de
+la siguiente manera:
 
 ```ts
 // Other imports
@@ -64,17 +66,20 @@ import app from '@adonisjs/core/services/app';
 //
 ```
 
-Una vez configurada la conexión, debemos crear la tabla de la base de datos, para ello corre el siguiente comando:
+Una vez configurada la conexión, debemos crear la tabla de la base de datos, para ello corre el
+siguiente comando:
 
 ```sh
 node ace sat-catalogs:create-update
 ```
 
-Este comando creará dos archivos, la base de datos y el archivo de version: `satcatalogs.db` y `satcatalogs_version.txt`.
+Este comando creará dos archivos, la base de datos y el archivo de version: `satcatalogs.db` y
+`satcatalogs_version.txt`.
 
 ### Uso básico
 
-Una vez configurada la conexión y creada la base de datos, se puede utilizar los modelos de cada catalogo, por ejemplo:
+Una vez configurada la conexión y creada la base de datos, se puede utilizar los modelos de cada
+catalogo, por ejemplo:
 
 ```ts
 import { Cfdi40CodigosPostales, Cfdi40ProductosServicios } from '@nodecfdi/adonisjs-sat-catalogs';
