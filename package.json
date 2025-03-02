@@ -12,16 +12,23 @@
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "@nodecfdi/prettier-config": "^1.4.0",
-    "prettier": "^3.4.2"
+    "@nodecfdi/prettier-config": "^1.4.1",
+    "prettier": "^3.5.2"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/starlight": "^0.30.3",
-    "astro": "^5.1.1",
+    "@astrojs/starlight": "^0.32.2",
+    "astro": "^5.4.1",
     "sharp": "^0.33.5",
-    "starlight-theme-rapide": "^0.3.0",
-    "typescript": "^5.7.2"
+    "starlight-theme-rapide": "^0.4.0",
+    "typescript": "~5.7.3"
   },
-  "packageManager": "pnpm@9.15.1"
+  "packageManager": "pnpm@10.5.2",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "sharp"
+    ]
+  }
 }
