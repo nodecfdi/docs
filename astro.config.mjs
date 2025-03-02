@@ -39,6 +39,13 @@ export default defineConfig({
           label: 'Librerias',
           items: [
             {
+              label: 'adonisjs-sat-catalogs',
+              collapsed: true,
+              items: [
+                { label: 'Instalación y uso', link: '/librarys/adonisjs-sat-catalogs/getting-started' },
+              ],
+            },
+            {
               label: 'base-converter',
               collapsed: true,
               items: [
