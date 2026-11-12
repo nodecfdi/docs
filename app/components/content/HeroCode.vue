@@ -14,7 +14,7 @@ const typedText = ref('');
 const visibleSteps = ref(0);
 const isTyping = ref(true);
 
-const fullCommand = computed(() => (activePkg.value ? `pnpm add @eienjs/${activePkg.value.name}` : ''));
+const fullCommand = computed(() => (activePkg.value ? `pnpm add @nodecfdi/${activePkg.value.name}` : ''));
 
 const { copy, copied } = useClipboard();
 
@@ -155,7 +155,7 @@ onBeforeUnmount(() => {
               :class="visibleSteps >= 1 ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'"
             >
               <span class="text-success">✔</span>
-              <span class="text-muted">Installed</span>
+              <span class="text-muted">Instalado</span>
               <span class="font-medium text-default">@nodecfdi/{{ activePkg.name }}</span>
               <span
                 v-if="activePkg.version"
@@ -166,8 +166,8 @@ onBeforeUnmount(() => {
               class="flex items-center gap-2 pt-1 transition-all duration-200"
               :class="visibleSteps >= 2 ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'"
             >
-              <span class="rounded bg-primary/15 px-1.5 py-0.5 text-[11px] font-semibold text-primary">DONE</span>
-              <span class="text-default">Package configured successfully</span>
+              <span class="rounded bg-primary/15 px-1.5 py-0.5 text-[11px] font-semibold text-primary">LISTO</span>
+              <span class="text-default">Paquete configurado correctamente</span>
             </div>
           </div>
         </div>

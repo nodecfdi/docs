@@ -9,20 +9,20 @@ export default defineNuxtConfig({
     'nuxt-llms',
   ],
   devtools: {
-    enabled: true
+    enabled: true,
   },
   css: ['~/assets/css/main.css'],
   content: {
     build: {
       markdown: {
         toc: {
-          searchDepth: 1
-        }
-      }
+          searchDepth: 1,
+        },
+      },
     },
     experimental: {
-      sqliteConnector: 'native'
-    }
+      sqliteConnector: 'native',
+    },
   },
   runtimeConfig: {
     siteUrl: 'https://nodecfdi.com',
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     },
   },
   experimental: {
-    asyncContext: true
+    asyncContext: true,
   },
   compatibilityDate: '2026-06-30',
   typescript: {
@@ -42,15 +42,15 @@ export default defineNuxtConfig({
   llms: {
     domain: 'https://nodecfdi.com',
     title: 'NodeCfdi',
-    description: 'NodeCfdi es una organización que brinda librerías de NodeJS, Javascript y Typescript para trabajar con CFDI y otras herramientas del SAT'
+    description: 'NodeCfdi es una organización que brinda librerías de NodeJS, Javascript y Typescript para trabajar con CFDI y otras herramientas del SAT',
   },
   ogImage: {
-    zeroRuntime: true
+    zeroRuntime: true,
   },
   prerender: {
     routes: [
-      '/'
+      '/',
     ],
-    crawlLinks: true
+    crawlLinks: true,
   },
 });

@@ -7,7 +7,6 @@
       "icon": "i-tabler-shield-check",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/credentials",
-      "version": "3.2.0",
       "docs": false,
       "featured": true
     },
@@ -18,7 +17,6 @@
       "icon": "i-tabler-cloud-download",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/sat-ws-descarga-masiva",
-      "version": "2.0.0",
       "docs": false,
       "featured": true
     },
@@ -29,7 +27,6 @@
       "icon": "i-tabler-activity",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/sat-estado-cfdi",
-      "version": "3.0.0",
       "docs": false,
       "featured": true
     },
@@ -40,7 +37,6 @@
       "icon": "i-tabler-database",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/sat-micro-catalogs",
-      "version": "1.0.2",
       "docs": false,
       "featured": false
     },
@@ -51,7 +47,6 @@
       "icon": "i-tabler-file-check",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/xml-schema-validator",
-      "version": "2.0.1",
       "docs": false,
       "featured": false
     },
@@ -62,7 +57,6 @@
       "icon": "i-tabler-download",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/xml-resource-retriever",
-      "version": "2.0.1",
       "docs": false,
       "featured": false
     },
@@ -73,7 +67,6 @@
       "icon": "i-tabler-cpu",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-core",
-      "version": "1.0.1",
       "docs": false,
       "featured": true
     },
@@ -84,7 +77,6 @@
       "icon": "i-tabler-brackets-angle",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-elements",
-      "version": "0.5.0",
       "docs": false,
       "featured": false
     },
@@ -95,7 +87,6 @@
       "icon": "i-tabler-sparkles",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-cleaner",
-      "version": "2.3.1",
       "docs": false,
       "featured": false
     },
@@ -106,7 +97,6 @@
       "icon": "i-tabler-checklist",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-validator",
-      "version": "1.1.1",
       "docs": false,
       "featured": false
     },
@@ -117,7 +107,6 @@
       "icon": "i-tabler-qrcode",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-expresiones",
-      "version": "3.0.4",
       "docs": false,
       "featured": false
     },
@@ -128,7 +117,6 @@
       "icon": "i-tabler-tool",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdiutils-core",
-      "version": "0.7.1",
       "docs": false,
       "featured": false
     },
@@ -139,7 +127,6 @@
       "icon": "i-tabler-file-type-pdf",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-to-pdf",
-      "version": "3.0.0-3",
       "docs": false,
       "featured": true
     },
@@ -150,7 +137,6 @@
       "icon": "i-tabler-json",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-to-json",
-      "version": "2.0.1",
       "docs": false,
       "featured": true
     },
@@ -161,7 +147,6 @@
       "icon": "i-tabler-id-badge-2",
       "category": "utilities",
       "repo": "https://github.com/nodecfdi/rfc",
-      "version": "2.0.6",
       "docs": false,
       "featured": true
     },
@@ -172,7 +157,6 @@
       "icon": "i-tabler-binary",
       "category": "utilities",
       "repo": "https://github.com/nodecfdi/base-converter",
-      "version": "3.0.0",
       "docs": false,
       "featured": false
     },
@@ -183,7 +167,6 @@
       "icon": "i-tabler-cookie",
       "category": "utilities",
       "repo": "https://github.com/nodecfdi/tough-cookie-file-store",
-      "version": "1.0.0",
       "docs": false,
       "featured": false
     },
@@ -194,7 +177,6 @@
       "icon": "i-tabler-brand-adonis-js",
       "category": "integrations",
       "repo": "https://github.com/nodecfdi/adonisjs-sat-catalogs",
-      "version": "1.1.1",
       "docs": false,
       "featured": false
     }

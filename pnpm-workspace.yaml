@@ -1,15 +1,15 @@
 minimumReleaseAge: 1440
 minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeExclude:
-  - "@eienjs/*"
+  - '@eienjs/*'
 
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 2880
 shellEmulator: true
 
 allowBuilds:
-  "@parcel/watcher": false
-  "@tailwindcss/oxide": false
+  '@parcel/watcher': false
+  '@tailwindcss/oxide': false
   esbuild: false
   sharp: true
   unrs-resolver: false
