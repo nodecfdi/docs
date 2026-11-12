@@ -37,7 +37,7 @@ if (!page.value) {
   if (target) {
     await navigateTo(target, { redirectCode: 302, replace: true });
   } else {
-    throw createError({ statusCode: 404, statusMessage: 'Página no encontrada', fatal: true });
+    throw createError({ status: 404, message: 'Página no encontrada', fatal: true });
   }
 }
 

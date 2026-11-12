@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData('index', async () => queryCollection('landing').path('/').first());
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Página no encontrada', fatal: true });
+  throw createError({ status: 404, message: 'Página no encontrada', fatal: true });
 }
 
 const title = page.value.seo.title || page.value.title;
