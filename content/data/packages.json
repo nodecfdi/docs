@@ -1,0 +1,15 @@
+{
+  "packages": [
+    {
+      "name": "credentials",
+      "title": "Credentials",
+      "description": "Maneja tu eFirma (FIEL) y tu Certificado de Sello Digital (CSD) de forma segura",
+      "icon": "i-tabler-shield-check",
+      "category": "nodecfdi",
+      "repo": "https://github.com/nodecfdi/credentials",
+      "version": "3.2.0",
+      "docs": false,
+      "featured": true
+    }
+  ]
+}
