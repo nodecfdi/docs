@@ -1,0 +1,121 @@
+name: Sync package docs
+
+# Triggered by a release in any NodeCfdi package repo (see .github/templates/notify-docs.yml),
+# or manually for a one-off sync.
+on:
+  repository_dispatch:
+    types: [package-docs-updated]
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Repository name inside the nodecfdi org (e.g. credentials)
+        required: true
+        type: string
+      ref:
+        description: Git ref (tag or branch) to pull docs from
+        required: false
+        default: main
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Serialize syncs so concurrent releases never race on the push.
+concurrency:
+  group: sync-package-docs
+  cancel-in-progress: false
+
+env:
+  ORG: eienjs
+  PACKAGE: ${{ github.event.client_payload.package || inputs.package }}
+  REF: ${{ github.event.client_payload.ref || inputs.ref || 'main' }}
+  VERSION: ${{ github.event.client_payload.version || inputs.ref || 'manual' }}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    outputs:
+      synced: ${{ steps.commit.outputs.synced }}
+      branch: ${{ steps.commit.outputs.branch }}
+    steps:
+      - name: Validate inputs
+        run: |
+          # Package name is used as a directory name: allow only safe characters.
+          if [[ ! "$PACKAGE" =~ ^[a-z0-9][a-z0-9._-]*$ ]] || [[ "$PACKAGE" == *..* ]]; then
+            echo "::error::Invalid package name: $PACKAGE"; exit 1
+          fi
+          if [[ ! "$REF" =~ ^[A-Za-z0-9._/-]+$ ]] || [[ "$REF" == *..* ]]; then
+            echo "::error::Invalid ref: $REF"; exit 1
+          fi
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 'lts/*'
+
+      - name: Checkout docs repo
+        uses: actions/checkout@v7
+        with:
+          path: site
+          fetch-depth: 0
+
+      - name: Checkout package repo
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ env.ORG }}/${{ env.PACKAGE }}
+          ref: ${{ env.REF }}
+          path: pkg
+          # Needed only for private repos. Falls back to the default token for public ones.
+          token: ${{ secrets.DOCS_SYNC_TOKEN || github.token }}
+
+      - name: Verify package ships docs
+        run: |
+          if [ ! -d pkg/docs ]; then
+            echo "::error::$ORG/$PACKAGE has no docs/ directory at $REF"; exit 1
+          fi
+
+      - name: Replace package docs
+        run: |
+          target="site/content/2.packages/$PACKAGE"
+          rm -rf "$target"
+          mkdir -p "$target"
+          cp -R pkg/docs/. "$target/"
+          # Ensure the sidebar group has a title even if the package does not provide one.
+          if [ ! -f "$target/.navigation.yml" ]; then
+            printf 'title: %s\n' "$PACKAGE" > "$target/.navigation.yml"
+          fi
+
+      - name: Update packages.json
+        run: |
+          if [ -f pkg/package.json ]; then
+            node site/scripts/update_packages_json.mjs "$PACKAGE" pkg/package.json --docs
+          else
+            echo "::warning::pkg/package.json not found, skipping packages.json update"
+          fi
+
+      - name: Commit and push
+        id: commit
+        working-directory: site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A content/2.packages content/data/packages.json
+          if git diff --cached --quiet; then
+            echo "No documentation changes."
+            echo "synced=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          target_branch="${GITHUB_REF_NAME:-main}"
+          git commit -m "docs($PACKAGE): :memo: sync documentation from $VERSION"
+          git pull --rebase origin "$target_branch"
+          git push origin "HEAD:$target_branch"
+          echo "synced=true" >> "$GITHUB_OUTPUT"
+          echo "branch=$target_branch" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.synced == 'true'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: ${{ needs.sync.outputs.branch }}

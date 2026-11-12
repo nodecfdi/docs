@@ -1,0 +1,36 @@
+# Copy this file to `.github/workflows/notify-docs.yml` in every package repo.
+#
+# Requirements:
+#   1. The package keeps its documentation in a top-level `docs/` directory
+#      (markdown, optional `.navigation.yml`, and any assets referenced from it).
+#   2. Optional metadata in `package.json`:
+#      "nodecfdi": { "title": "credentials", "icon": "i-tabler-key", "category": "cfdi", "featured": boolean }
+#   3. A repository secret `DOCS_SYNC_TOKEN`: a fine-grained PAT (or GitHub App token)
+#      with "Contents: read & write" on `nodecfdi/docs` (required to send repository_dispatch).
+name: Notify docs
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref (branch or tag) to sync docs from (defaults to current branch)
+        required: false
+        type: string
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch docs sync
+        env:
+          GH_TOKEN: ${{ secrets.DOCS_SYNC_TOKEN }}
+          PACKAGE: ${{ github.event.repository.name }}
+          REF: ${{ github.event.release.tag_name || inputs.ref || github.ref_name }}
+        run: |
+          gh api repos/nodecfdi/docs/dispatches \
+            -f event_type=package-docs-updated \
+            -f "client_payload[package]=$PACKAGE" \
+            -f "client_payload[ref]=$REF" \
+            -f "client_payload[version]=$REF"
