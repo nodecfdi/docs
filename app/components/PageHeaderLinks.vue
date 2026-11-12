@@ -8,7 +8,7 @@ const { copy, copied } = useClipboard();
 const site = useSiteConfig();
 
 const routePath = computed(() => withoutTrailingSlash(route.path));
-const mdPath = computed(() => `${site.url}/raw${routePath.value}.md`);
+const mdPath = computed(() => `${site.url}${routePath.value}.md`);
 
 const items = computed(() => [
   {
@@ -26,7 +26,7 @@ const items = computed(() => [
     label: 'Ver en Markdown',
     icon: 'i-tabler-markdown',
     target: '_blank',
-    to: `/raw${routePath.value}.md`,
+    to: `${routePath.value}.md`,
   },
   {
     label: 'Abrir en ChatGPT',
@@ -43,7 +43,7 @@ const items = computed(() => [
 ]);
 
 async function copyPage() {
-  void copy(await $fetch<string>(`/raw${routePath.value}.md`));
+  void copy(await $fetch<string>(`${routePath.value}.md`));
 }
 </script>
 
