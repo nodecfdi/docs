@@ -10,11 +10,27 @@ const featuredPackages = computed(() =>
 const activeIndex = ref(0);
 const activePkg = computed(() => featuredPackages.value[activeIndex.value] ?? featuredPackages.value[0]);
 
+type PackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun';
+const packageManagers = [
+  { label: 'pnpm', value: 'pnpm' },
+  { label: 'npm', value: 'npm' },
+  { label: 'yarn', value: 'yarn' },
+  { label: 'bun', value: 'bun' },
+];
+const selectedPm = ref<string>('pnpm');
+
+const pmCommands: Record<PackageManager, (name: string) => string> = {
+  pnpm: (name) => `pnpm add @nodecfdi/${name}`,
+  npm: (name) => `npm install @nodecfdi/${name}`,
+  yarn: (name) => `yarn add @nodecfdi/${name}`,
+  bun: (name) => `bun add @nodecfdi/${name}`,
+};
+
 const typedText = ref('');
 const visibleSteps = ref(0);
 const isTyping = ref(true);
 
-const fullCommand = computed(() => (activePkg.value ? `pnpm add @nodecfdi/${activePkg.value.name}` : ''));
+const fullCommand = computed(() => (activePkg.value ? pmCommands[selectedPm.value as PackageManager](activePkg.value.name) : ''));
 
 const { copy, copied } = useClipboard();
 
@@ -86,7 +102,7 @@ function selectPackage(index: number) {
   activeIndex.value = index;
 }
 
-watch(activeIndex, () => {
+watch([activeIndex, selectedPm], () => {
   runSequence();
 });
 
@@ -111,12 +127,12 @@ onBeforeUnmount(() => {
       class="flex min-w-0 flex-col gap-2 rounded-xl bg-elevated/50 px-2.5 py-2 ring ring-default backdrop-blur-xs"
     >
       <!-- Terminal window header -->
-      <div class="flex items-center justify-between ps-2 pe-1 pt-0.5">
+      <div class="flex items-center justify-between gap-2 ps-2 pe-1 pt-0.5">
         <div class="flex items-center gap-2">
           <span class="size-2.5 rounded-full bg-error/75" />
           <span class="size-2.5 rounded-full bg-warning/75" />
           <span class="size-2.5 rounded-full bg-success/75" />
-          <span class="ms-2 flex items-center gap-1.5 font-mono text-xs text-muted">
+          <span class="ms-1.5 hidden sm:flex items-center gap-1.5 font-mono text-xs text-muted">
             <UIcon
               name="i-tabler-terminal-2"
               class="size-3.5 text-primary"
@@ -125,12 +141,22 @@ onBeforeUnmount(() => {
           </span>
         </div>
 
+        <UTabs
+          v-model="selectedPm"
+          :items="packageManagers"
+          :content="false"
+          size="xs"
+          variant="pill"
+          color="primary"
+          class="font-mono"
+        />
+
         <UButton
           :icon="copied ? 'i-tabler-copy-check' : 'i-tabler-copy'"
           color="neutral"
           variant="ghost"
           size="xs"
-          :aria-label="`Copy ${fullCommand}`"
+          :aria-label="`Copiar comando: ${fullCommand}`"
           @click="copy(fullCommand)"
         />
       </div>
@@ -194,21 +220,16 @@ onBeforeUnmount(() => {
             :key="pkg.name"
             :text="pkg.title"
           >
-            <button
-              type="button"
+            <UButton
+              :icon="pkg.icon"
               :aria-label="pkg.title"
               :aria-pressed="activeIndex === idx"
-              class="flex size-8 items-center justify-center rounded-full transition"
-              :class="activeIndex === idx
-                ? 'bg-primary/20 text-primary ring-2 ring-primary/50 shadow-sm shadow-primary/30'
-                : 'bg-elevated text-muted hover:text-default hover:bg-accented/60'"
+              size="xs"
+              class="rounded-full"
+              :color="activeIndex === idx ? 'primary' : 'neutral'"
+              :variant="activeIndex === idx ? 'subtle' : 'ghost'"
               @click="selectPackage(idx)"
-            >
-              <UIcon
-                :name="pkg.icon"
-                class="size-4"
-              />
-            </button>
+            />
           </UTooltip>
         </div>
 
