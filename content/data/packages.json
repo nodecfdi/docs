@@ -3,13 +3,200 @@
     {
       "name": "credentials",
       "title": "Credentials",
-      "description": "Maneja tu eFirma (FIEL) y tu Certificado de Sello Digital (CSD) de forma segura",
+      "description": "Maneja tu eFirma (FIEL) y tu Certificado de Sello Digital (CSD) de forma segura.",
       "icon": "i-tabler-shield-check",
-      "category": "nodecfdi",
+      "category": "sat",
       "repo": "https://github.com/nodecfdi/credentials",
       "version": "3.2.0",
       "docs": false,
       "featured": true
+    },
+    {
+      "name": "sat-ws-descarga-masiva",
+      "title": "SAT Descarga Masiva",
+      "description": "Cliente para el servicio web del SAT de Descarga Masiva de CFDI y metadatos.",
+      "icon": "i-tabler-cloud-download",
+      "category": "sat",
+      "repo": "https://github.com/nodecfdi/sat-ws-descarga-masiva",
+      "version": "2.0.0",
+      "docs": false,
+      "featured": true
+    },
+    {
+      "name": "sat-estado-cfdi",
+      "title": "SAT Estado CFDI",
+      "description": "Consulta en tiempo real del estado de un CFDI en el webservice oficial del SAT.",
+      "icon": "i-tabler-activity",
+      "category": "sat",
+      "repo": "https://github.com/nodecfdi/sat-estado-cfdi",
+      "version": "3.0.0",
+      "docs": false,
+      "featured": true
+    },
+    {
+      "name": "sat-micro-catalogs",
+      "title": "SAT Micro Catalogs",
+      "description": "Micro catálogos ligeros y actualizados con claves fiscales del SAT para CFDI.",
+      "icon": "i-tabler-database",
+      "category": "sat",
+      "repo": "https://github.com/nodecfdi/sat-micro-catalogs",
+      "version": "1.0.2",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "xml-schema-validator",
+      "title": "XML Schema Validator",
+      "description": "Validación estricta de documentos XML contra esquemas formales XSD del SAT.",
+      "icon": "i-tabler-file-check",
+      "category": "sat",
+      "repo": "https://github.com/nodecfdi/xml-schema-validator",
+      "version": "2.0.1",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "xml-resource-retriever",
+      "title": "XML Resource Retriever",
+      "description": "Descargador y gestor de almacenamiento local en caché de esquemas XSD y hojas XSLT del SAT.",
+      "icon": "i-tabler-download",
+      "category": "sat",
+      "repo": "https://github.com/nodecfdi/xml-resource-retriever",
+      "version": "2.0.1",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "cfdi-core",
+      "title": "CFDI Core",
+      "description": "Herramientas base, lectura y utilerías esenciales para trabajar con comprobantes fiscales.",
+      "icon": "i-tabler-cpu",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdi-core",
+      "version": "1.0.1",
+      "docs": false,
+      "featured": true
+    },
+    {
+      "name": "cfdi-elements",
+      "title": "CFDI Elements",
+      "description": "Estructuras de datos y manipulación de nodos XML que componen un CFDI.",
+      "icon": "i-tabler-brackets-angle",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdi-elements",
+      "version": "0.5.0",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "cfdi-cleaner",
+      "title": "CFDI Cleaner",
+      "description": "Limpia, normaliza y corrige inconsistencias comunes en archivos XML de CFDI v3.3 y v4.0.",
+      "icon": "i-tabler-sparkles",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdi-cleaner",
+      "version": "2.3.1",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "cfdi-validator",
+      "title": "CFDI Validator",
+      "description": "Validaciones estructurales y de reglas fiscales aplicables a comprobantes CFDI.",
+      "icon": "i-tabler-checklist",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdi-validator",
+      "version": "1.1.1",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "cfdi-expresiones",
+      "title": "CFDI Expresiones",
+      "description": "Generador de expresiones para códigos QR y validación técnica del SAT según el Anexo 20.",
+      "icon": "i-tabler-qrcode",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdi-expresiones",
+      "version": "3.0.4",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "cfdiutils-core",
+      "title": "CfdiUtils Core",
+      "description": "Núcleo de utilerías especializadas y algoritmos derivados de CfdiUtils.",
+      "icon": "i-tabler-tool",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdiutils-core",
+      "version": "0.7.1",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "cfdi-to-pdf",
+      "title": "CFDI to PDF",
+      "description": "Generación de representaciones impresas profesionales en PDF basadas en XML CFDI o Retenciones.",
+      "icon": "i-tabler-file-type-pdf",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdi-to-pdf",
+      "version": "3.0.0-3",
+      "docs": false,
+      "featured": true
+    },
+    {
+      "name": "cfdi-to-json",
+      "title": "CFDI to JSON",
+      "description": "Conversión rápida de archivos XML CFDI a estructuras JSON claras y tipadas.",
+      "icon": "i-tabler-json",
+      "category": "cfdi",
+      "repo": "https://github.com/nodecfdi/cfdi-to-json",
+      "version": "2.0.1",
+      "docs": false,
+      "featured": true
+    },
+    {
+      "name": "rfc",
+      "title": "RFC",
+      "description": "Validación, cálculo de homoclave y formateo para RFC (Registro Federal de Contribuyentes).",
+      "icon": "i-tabler-id-badge-2",
+      "category": "utilities",
+      "repo": "https://github.com/nodecfdi/rfc",
+      "version": "2.0.6",
+      "docs": false,
+      "featured": true
+    },
+    {
+      "name": "base-converter",
+      "title": "Base Converter",
+      "description": "Conversor de números de precisión arbitraria entre diferentes bases numéricas.",
+      "icon": "i-tabler-binary",
+      "category": "utilities",
+      "repo": "https://github.com/nodecfdi/base-converter",
+      "version": "3.0.0",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "tough-cookie-file-store",
+      "title": "Tough Cookie File Store",
+      "description": "Implementación de persistencia de cookies en archivos JSON para peticiones HTTP.",
+      "icon": "i-tabler-cookie",
+      "category": "utilities",
+      "repo": "https://github.com/nodecfdi/tough-cookie-file-store",
+      "version": "1.0.0",
+      "docs": false,
+      "featured": false
+    },
+    {
+      "name": "adonisjs-sat-catalogs",
+      "title": "AdonisJS SAT Catalogs",
+      "description": "Proveedor y wrapper para integrar catálogos del SAT fácilmente en el framework AdonisJS.",
+      "icon": "i-tabler-brand-adonis-js",
+      "category": "integrations",
+      "repo": "https://github.com/nodecfdi/adonisjs-sat-catalogs",
+      "version": "1.1.1",
+      "docs": false,
+      "featured": false
     }
   ]
 }

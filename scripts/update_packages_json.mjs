@@ -3,7 +3,7 @@
 // Usage: node scripts/update_packages_json.mjs <repo-name> <path-to-package.json> [--docs]
 //
 // Optional metadata in the package's package.json:
-//   "nodecfdi": { "title": "credentials", "icon": "i-tabler-key", "category": "adonisjs", "featured": boolean }
+//   "nodecfdi": { "title": "credentials", "icon": "i-tabler-key", "category": "cfdi", "featured": boolean }
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
@@ -33,14 +33,14 @@ const entry = {
   title: meta.title ?? previous.title ?? titleFromName(name),
   description: pkg.description ?? previous.description ?? '',
   icon: meta.icon ?? previous.icon ?? 'i-tabler-package',
-  category: meta.category ?? previous.category ?? (name.startsWith('adonisjs-') ? 'adonisjs' : 'tooling'),
+  category: meta.category ?? previous.category ?? 'cfdi',
   repo: previous.repo ?? `https://github.com/nodecfdi/${name}`,
   ...(pkg.version ? { version: pkg.version } : (previous.version ? { version: previous.version } : {})),
   docs: flags.includes('--docs') || previous.docs === true,
   featured: meta.featured ?? previous.featured ?? false,
 };
 
-if (!['adonisjs'].includes(entry.category)) {
+if (!['cfdi', 'sat', 'utilities', 'integrations'].includes(entry.category)) {
   console.error(`Invalid category "${entry.category}"`);
   process.exit(1);
 }

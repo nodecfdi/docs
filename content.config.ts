@@ -1,11 +1,11 @@
-import { defineContentConfig, defineCollection, z } from '@nuxt/content';
+import { defineCollection, defineContentConfig, z } from '@nuxt/content';
 
 const packageSchema = z.object({
   name: z.string(),
   title: z.string(),
   description: z.string(),
   icon: z.string(),
-  category: z.enum(['adonisjs']),
+  category: z.enum(['cfdi', 'sat', 'utilities', 'integrations']),
   repo: z.string(),
   version: z.string().optional(),
   docs: z.boolean().default(false),
