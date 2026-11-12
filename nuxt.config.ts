@@ -12,6 +12,10 @@ export default defineNuxtConfig({
     enabled: true,
   },
   css: ['~/assets/css/main.css'],
+  site: {
+    url: 'https://nodecfdi.com',
+    name: 'NodeCfdi',
+  },
   content: {
     build: {
       markdown: {
