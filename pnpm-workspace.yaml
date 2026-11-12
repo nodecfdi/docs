@@ -1,0 +1,22 @@
+minimumReleaseAge: 1440
+minimumReleaseAgeExcludePrune: true
+minimumReleaseAgeExclude:
+  - "@eienjs/*"
+
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 2880
+shellEmulator: true
+
+allowBuilds:
+  "@parcel/watcher": false
+  "@tailwindcss/oxide": false
+  esbuild: false
+  sharp: true
+  unrs-resolver: false
+  vue-demi: false
+
+permissions:
+  '@nuxtjs/seo':
+    skills: true
+  nuxt-og-image:
+    skills: false

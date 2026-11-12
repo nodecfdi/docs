@@ -1,0 +1,43 @@
+{
+  "name": "@nodecfdi/docs",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@12.18.0",
+  "scripts": {
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "tool:code": "pnpm lint:check && pnpm typecheck"
+  },
+  "dependencies": {
+    "@iconify-json/tabler": "^1.2.44",
+    "@nuxt/content": "^3.16.2",
+    "@nuxt/image": "^2.2.1",
+    "@nuxt/ui": "^4.12.0",
+    "@nuxtjs/mdc": "^0.23.3",
+    "@nuxtjs/seo": "^6.0.1",
+    "@takumi-rs/core": "^2.20.0",
+    "@vueuse/core": "^15.0.0",
+    "nuxt": "^4.6.4",
+    "nuxt-llms": "^0.3.1",
+    "nuxt-og-image": "^7.0.7",
+    "tailwindcss": "^4.3.5",
+    "ufo": "^1.6.4",
+    "unist-util-visit": "^5.2.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eienjs/eslint-config": "^2.3.2",
+    "@nuxt/eslint-plugin": "^1.17.0",
+    "eslint": "^10.14.0",
+    "eslint-plugin-erasable-syntax-only": "^0.7.2",
+    "eslint-plugin-format": "^2.0.1",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.14"
+  }
+}
