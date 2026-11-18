@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', 'katex/dist/katex.min.css'],
   site: {
     url: 'https://nodecfdi.com',
     name: 'NodeCfdi',
@@ -21,6 +21,12 @@ export default defineNuxtConfig({
       markdown: {
         toc: {
           searchDepth: 1,
+        },
+        remarkPlugins: {
+          'remark-math': {},
+        },
+        rehypePlugins: {
+          'rehype-katex': {},
         },
       },
     },
