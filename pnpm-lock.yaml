@@ -227,6 +227,12 @@ importers:
       eslint-plugin-format:
         specifier: ^2.0.1
         version: 2.0.1(eslint@10.14.0(jiti@2.7.0)(supports-color@10.2.2))
+      nuxt-seo-utils:
+        specifier: ^9.0.2
+        version: 9.0.2(6e2bb2d9d14470251f445fc3ddb1680f)
+      sharp:
+        specifier: ^0.35.5
+        version: 0.35.5
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -5187,8 +5193,8 @@ packages:
       zod:
         optional: true
 
-  nuxt-seo-utils@9.0.1:
-    resolution: {integrity: sha512-aRUEAp5Cj1tHoGIO56Rn7VWzvCi2Ie3JQOS+ZhZM5dmb+Jvl3XzqtKUB0BjXSKOvMEi6I0SySKc7h8a40USpUw==}
+  nuxt-seo-utils@9.0.2:
+    resolution: {integrity: sha512-Zzh0cp3AK4hU1zN7puB9jk+bm6LT7yZumTvIrpfswRzCooozY67oElDeXzMi33LDusrEuEzc9N27qIC91FbAYA==}
     engines: {node: ^22.22.3 || ^24.15.0 || >=26.0.0}
     hasBin: true
     peerDependencies:
@@ -7411,8 +7417,7 @@ snapshots:
       '@iconify/types': 2.0.0
       vue: 3.5.45(typescript@6.0.3)
 
-  '@img/colour@1.1.0':
-    optional: true
+  '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.35.5':
     optionalDependencies:
@@ -8494,7 +8499,7 @@ snapshots:
       nuxt-link-checker: 6.0.1(a13d8e5cf7a3bd7606f49d72fc6d603c)
       nuxt-og-image: 7.0.7(a4992b8f1f6035096eef4a3db4c98aae)
       nuxt-schema-org: 7.0.1(b1c66976543449a104765ca82b03c7ec)
-      nuxt-seo-utils: 9.0.1(6e2bb2d9d14470251f445fc3ddb1680f)
+      nuxt-seo-utils: 9.0.2(6e2bb2d9d14470251f445fc3ddb1680f)
       nuxt-site-config: 5.0.3(729744cb9b8b974c789171508f595688)
       nuxt-skew-protection: 2.0.3(6e0e8b7bd71aaba76607d1386069dedd)
       nuxtseo-shared: 6.0.3(f230a7e72e54f18ea06fc971b11406ab)
@@ -12503,7 +12508,7 @@ snapshots:
       - rolldown
       - unplugin
 
-  nuxt-seo-utils@9.0.1(6e2bb2d9d14470251f445fc3ddb1680f):
+  nuxt-seo-utils@9.0.2(6e2bb2d9d14470251f445fc3ddb1680f):
     dependencies:
       '@nuxt/kit': 4.6.4(@nuxt/schema@4.6.4)(confbox@0.3.2)(dotenv@17.4.2)(giget@3.3.1)(jiti@2.7.0)(magic-string@1.4.5)(mlly@1.8.2)(oxc-parser@0.153.0)(rolldown@1.2.18)(unplugin@3.7.0(esbuild@0.28.2)(rolldown@1.2.18)(rollup@4.68.2)(vite@8.3.7(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))
       citty: 0.2.2
@@ -13560,7 +13565,6 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.5
       '@img/sharp-win32-ia32': 0.35.5
       '@img/sharp-win32-x64': 0.35.5
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:

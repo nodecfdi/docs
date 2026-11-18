@@ -19,9 +19,9 @@ const { header } = useAppConfig();
 
     <template #title>
       <UColorModeImage
-        light="/img/nodecfdi_logo_light.webp"
-        dark="/img/nodecfdi_logo_dark.webp"
-        alt="NodeCfdi L"
+        light="/img/nodecfdi_logo.webp"
+        dark="/img/nodecfdi_logo.webp"
+        alt="NodeCfdi Logo"
         class="h-7 w-auto shrink-0"
       />
 

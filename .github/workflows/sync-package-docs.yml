@@ -28,7 +28,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  ORG: eienjs
+  ORG: nodecfdi
   PACKAGE: ${{ github.event.client_payload.package || inputs.package }}
   REF: ${{ github.event.client_payload.ref || inputs.ref || 'main' }}
   VERSION: ${{ github.event.client_payload.version || inputs.ref || 'manual' }}
