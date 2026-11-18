@@ -153,11 +153,12 @@
     {
       "name": "base-converter",
       "title": "Base Converter",
-      "description": "Conversor de números de precisión arbitraria entre diferentes bases numéricas.",
+      "description": "Librería que convierte un número entre bases arbitrarias",
       "icon": "i-tabler-binary",
       "category": "utilities",
       "repo": "https://github.com/nodecfdi/base-converter",
-      "docs": false,
+      "version": "3.0.1",
+      "docs": true,
       "featured": false
     },
     {
