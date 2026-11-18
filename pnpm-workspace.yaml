@@ -20,3 +20,9 @@ permissions:
     skills: true
   nuxt-og-image:
     skills: false
+  nuxt-seo-utils:
+    skills: true
+
+skills:
+  dirs:
+    - .agents/skills

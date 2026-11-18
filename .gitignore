@@ -30,3 +30,7 @@ logs
 # AI related
 .claude/
 .antigravity/
+.agents/
+.agent/
+.copilot/
+.cursor/
