@@ -3,11 +3,12 @@
     {
       "name": "credentials",
       "title": "Credentials",
-      "description": "Maneja tu eFirma (FIEL) y tu Certificado de Sello Digital (CSD) de forma segura.",
-      "icon": "i-tabler-shield-check",
+      "description": "Librería para usar eFirma (fiel) y CSD (sellos) para el SAT",
+      "icon": "i-tabler-certificate",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/credentials",
-      "docs": false,
+      "version": "4.0.0",
+      "docs": true,
       "featured": true
     },
     {
