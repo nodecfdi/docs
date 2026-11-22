@@ -34,11 +34,12 @@
     {
       "name": "sat-micro-catalogs",
       "title": "SAT Micro Catalogs",
-      "description": "Micro catálogos ligeros y actualizados con claves fiscales del SAT para CFDI.",
-      "icon": "i-tabler-database",
+      "description": "Micro Catálogos CFDI del SAT",
+      "icon": "i-tabler-book-2",
       "category": "sat",
       "repo": "https://github.com/nodecfdi/sat-micro-catalogs",
-      "docs": false,
+      "version": "2.0.0",
+      "docs": true,
       "featured": false
     },
     {
