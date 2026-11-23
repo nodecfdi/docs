@@ -65,11 +65,12 @@
     {
       "name": "cfdi-core",
       "title": "CFDI Core",
-      "description": "Herramientas base, lectura y utilerías esenciales para trabajar con comprobantes fiscales.",
-      "icon": "i-tabler-cpu",
+      "description": "Librería que contiene las herramientas base para trabajar con CFDI's",
+      "icon": "i-tabler-atom-2",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-core",
-      "docs": false,
+      "version": "2.0.0",
+      "docs": true,
       "featured": true
     },
     {
