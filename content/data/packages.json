@@ -76,12 +76,13 @@
     {
       "name": "cfdi-elements",
       "title": "CFDI Elements",
-      "description": "Estructuras de datos y manipulación de nodos XML que componen un CFDI.",
-      "icon": "i-tabler-brackets-angle",
+      "description": "Librería de elementos y/o estructuras de datos que componen un cfdi",
+      "icon": "i-tabler-components",
       "category": "cfdi",
       "repo": "https://github.com/nodecfdi/cfdi-elements",
-      "docs": false,
-      "featured": false
+      "version": "1.0.0",
+      "docs": true,
+      "featured": true
     },
     {
       "name": "cfdi-cleaner",
