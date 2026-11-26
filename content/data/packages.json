@@ -55,11 +55,12 @@
     {
       "name": "xml-resource-retriever",
       "title": "XML Resource Retriever",
-      "description": "Descargador y gestor de almacenamiento local en caché de esquemas XSD y hojas XSLT del SAT.",
-      "icon": "i-tabler-download",
-      "category": "sat",
+      "description": "XSD and XSLT resource downloader for local storage",
+      "icon": "i-tabler-file-download",
+      "category": "utilities",
       "repo": "https://github.com/nodecfdi/xml-resource-retriever",
-      "docs": false,
+      "version": "3.0.0",
+      "docs": true,
       "featured": false
     },
     {
